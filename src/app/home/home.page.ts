@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
 
 import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
@@ -10,13 +11,17 @@ import { map } from 'rxjs/operators';
 })
 export class HomePage {
 
-  constructor(public http: Http) { }
+  constructor(public http: Http, public platform: Platform) {
+    console.log(platform.is('android'));
+   }
 
   posts;
+  irudiaDa = true;
+  bideoaDa = false;
 
-  ionViewWillEnter() {
+  /*ionViewWillEnter() {
 
-    let url = "https://api.reddit.com/r/cats/.json";
+    let url = "https://api.reddit.com/r/IdiotsInCars/.json";
 
     this.http.get(url).pipe(map(res => res.json())).subscribe(data => {
 
@@ -32,11 +37,11 @@ export class HomePage {
 
         catch{
           try {
-            var primerPostImg = children.data.media.reddit_video.hls_url;
-             primerPostImg = "This image doesn't load in your navigator"
+            var primerPostImg = children.data.url;
+            
           }
           catch{
-            var primerPostImg = children.data.url;
+            var primerPostImg = children.data.thumbnail;
           }
         }
 
@@ -47,6 +52,6 @@ export class HomePage {
 
       }
     });
-  }
+  }*/
 
 }

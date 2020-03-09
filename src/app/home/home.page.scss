@@ -29,3 +29,48 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+
+#post1{
+  padding: 10px;
+  margin-left: 20%;
+  width: min-content;
+  margin-top: 2em;
+  border-style: ridge;
+}
+
+#lineaArriba{
+  font-size: 12px;
+}
+#footer{
+  margin-left: 5%;
+}
+
+.irudia{
+  //margin-left: 5%;
+  max-width: 35em;
+  max-height: 35em;
+}
+
+@media (max-width: 500px) {
+  #post1{
+    padding: 5px;
+    margin-left: 10%;
+    width: min-content;
+    margin-top: 1em;
+    border-style: ridge;
+  }
+  
+  #lineaArriba{
+    font-size: 12px;
+  }
+  #footer{
+    margin-left: 5%;
+  }
+  
+  .irudia{
+    //margin-left: 5%;
+    max-width: 25em;
+    max-height: 20em;
+  }
+  }
