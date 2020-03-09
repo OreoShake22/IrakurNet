@@ -31,7 +31,7 @@ ion-content ion-toolbar {
 }
 
 
-#post1{
+.post{
   padding: 10px;
   margin-left: 20%;
   width: min-content;
@@ -39,10 +39,10 @@ ion-content ion-toolbar {
   border-style: ridge;
 }
 
-#lineaArriba{
+.lineaArriba{
   font-size: 12px;
 }
-#footer{
+.footer{
   margin-left: 5%;
 }
 
@@ -52,8 +52,19 @@ ion-content ion-toolbar {
   max-height: 35em;
 }
 
+#topKategoria{
+  right: 5em;
+  position: absolute;
+  top: 5em;
+  padding: 5px;
+  border-style: groove;
+  background-image: linear-gradient(to right, blue,lightblue,purple,purple,indigo);
+}
+#colorinesTop{
+}
+
 @media (max-width: 500px) {
-  #post1{
+  .post{
     padding: 5px;
     margin-left: 10%;
     width: min-content;
@@ -61,10 +72,10 @@ ion-content ion-toolbar {
     border-style: ridge;
   }
   
-  #lineaArriba{
+  .lineaArriba{
     font-size: 12px;
   }
-  #footer{
+  .footer{
     margin-left: 5%;
   }
   

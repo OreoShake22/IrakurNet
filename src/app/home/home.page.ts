@@ -13,7 +13,7 @@ export class HomePage {
 
   constructor(public http: Http, public platform: Platform) {
     console.log(platform.is('android'));
-   }
+  }
 
   posts;
   irudiaDa = true;
@@ -54,4 +54,7 @@ export class HomePage {
     });
   }*/
 
+  ionViewWillEnter() {
+    
+  }
 }
