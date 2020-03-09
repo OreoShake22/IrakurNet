@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpModule } from '@angular/http';
+import { RestService } from  '../app/providers/rest.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    RestService
   ],
   bootstrap: [AppComponent]
 })
