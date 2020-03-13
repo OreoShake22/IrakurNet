@@ -53,14 +53,42 @@ ion-content ion-toolbar {
 }
 
 #topKategoria{
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
   right: 5em;
   position: absolute;
   top: 5em;
   padding: 5px;
   border-style: groove;
-  background-image: linear-gradient(to right, blue,lightblue,purple,purple,indigo);
+  background-image: linear-gradient(to right, indigo,purple,blue,lightblue,blue,purple,indigo);
 }
-#colorinesTop{
+#topKategoria a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#topKategoria a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#topKategoria a:hover {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
+}
+#topKategorria a{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;  
+}
+
+#topKategoria a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 @media (max-width: 500px) {
