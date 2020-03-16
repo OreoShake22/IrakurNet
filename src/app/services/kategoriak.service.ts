@@ -16,21 +16,19 @@ export class KategoriakService {
       });
   }
 
-  onCreateKategoria(kategoria) {
+  onCreateKategoria(data) {
 
-    this.restProvider.createProduct(kategoria).subscribe((newKategoria) => {
-      this.kategoriak = this.kategoriak.concat(newKategoria);
-    });
+    this.restProvider.addKategoria(data)
   }
 
   onUpdateProduct(kategoria) {
-    this.restProvider.updateProduct(kategoria).subscribe((updatedKategoria) => {
+    this.restProvider.updateKategoria(kategoria).subscribe((updatedKategoria) => {
       
     });
   }
 
   onRemoveProduct(kategoria) {
-    this.restProvider.deleteProductById(kategoria.id).subscribe(() => {
+    this.restProvider.deleteKategoriaById(kategoria.id).subscribe(() => {
       this.kategoriak = this.kategoriak.filter((e) =>  e.id !== kategoria.id);
     });
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {KategoriakService}from '../services/kategoriak.service'
 @Component({
   selector: 'app-add-post-page',
   templateUrl: './add-post-page.page.html',
@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPostPagePage implements OnInit {
 
-  constructor() { }
+  constructor(private kategoriaservice:KategoriakService) { }
 
   ngOnInit() {
     
   }
 
+  addKat(){
+    this.kategoriaservice.onCreateKategoria()
+  }
 }
