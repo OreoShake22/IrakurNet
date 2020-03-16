@@ -24,10 +24,13 @@ export class PostsService {
 
   onUpdateProduct(product) {
     this.restProvider.updateProduct(product).subscribe((updatedProduct) => {
-    /* You can assign back the updated product to the model holding the form's product*/
-    }
-    
-    );
-    
-    }
+      
+    });
+  }
+
+  onRemoveProduct(product) {
+    this.restProvider.deleteProductById(product.id).subscribe(() => {
+      this.products = this.products.filter((e) =>  e.id !== product.id);
+    });
+  }
 }
