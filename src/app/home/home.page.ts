@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -56,5 +58,11 @@ export class HomePage {
 
   ionViewWillEnter() {
     
+  }
+  report(){
+    var r = confirm("Haurreko posta reportatu nahi duzu?");
+    if (r ) {
+      alert("Posta reportatu duzu, gure administrariek ahal dutenean begiratuko dute");
+    }
   }
 }
