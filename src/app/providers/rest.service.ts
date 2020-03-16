@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/Rx'
 import { map } from 'rxjs/operators';
 import { Product } from '../Models/model'
+import { Kategoria } from '../Models/kategoria'
 
 @Injectable({
   providedIn: 'root'
@@ -83,5 +84,75 @@ export class RestService {
 
       .delete(this.baseUrl + '/products/' + productId)
   }
+
+
+  /////////////////////////////KATEGORIAK/////////////////////////////7
+
+  // Sending a GET request to /kategoriak
+
+  public getKategoriak(): Observable<Kategoria[]> {
+
+    return this.httpClient
+
+      .get<Kategoria[]>(this.baseUrl + '/kategoriak')
+
+      .map(kategoriak => {
+
+        return kategoriak.map((kategoria) => new Kategoria(kategoria));
+
+      })
+  }
+
+
+  // Sending a POST request to /kategoriak
+
+  public createKategoria(kategoria: Kategoria): Observable<Kategoria> {
+    return this.httpClient
+
+      .post(this.baseUrl + '/kategoriak', kategoria)
+
+      .map(response => {
+
+        return new Kategoria(response);
+
+      })
+  }
+
+  // Sending a GET request to /kategoriak/:id
+
+  public getKategoriaById(kategoriaId: number): Observable<Kategoria> {
+
+    return this.httpClient
+
+      .get(this.baseUrl + '/kategoriak/' + kategoriaId)
+
+      .map(response => {
+
+        return new Kategoria(response);
+
+      })
+  }
+
+  // Sending a PUT request to /kategoriak/:id
+
+  public updateKategoria(kategoria: Kategoria): Observable<Kategoria> {
+
+    return this.httpClient
+
+      .put(this.baseUrl + '/kategoriak/' + kategoria.id, kategoria)
+
+      .map(response => {
+
+        return new Kategoria(response);
+      })
+  }
+
+  // Sending a DELETE request to /kategoriak/:id
+
+  public deleteKategoriaById(kategoriaId: number) {
+    return this.httpClient
+
+      .delete(this.baseUrl + '/kategoriak/' + kategoriaId)
+  }  
 
 }

@@ -1,12 +1,8 @@
-export  class  Product {
+export  class  Kategoria {
 
     id: number;
     
     name: string;
-    
-    cost: number;
-    
-    quantity: number;
     
     constructor(values: Object = {}) {
     
