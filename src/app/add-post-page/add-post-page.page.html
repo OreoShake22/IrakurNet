@@ -29,8 +29,8 @@
   </form>
   <form onsubmit="addKat()">
     <label for="fizena">Izena:</label><br>
-    <input type="text" id="fizena" name="fizena" placeholder="Kategoria izena"><br>
+    <input type="text" [(ngModel)]="myInput" id="fizena" name="fizena" placeholder="Kategoria izena"><br>
     <input type="submit" value="Bidali">
   </form>
-
+  <button myitem (click)='addKat()'>CLICK</button>
 </ion-content>

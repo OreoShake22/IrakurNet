@@ -1,36 +1,43 @@
 import { Injectable } from '@angular/core';
 import { RestService } from  './../providers/rest.service';
 import { NavController } from '@ionic/angular';
-import { Product } from '../Models/model'
+import { Post } from '../Models/Post'
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService {
-  private  products : Product[] = [];
+export class PostService {
+  private  posts : Post[] = [];
   constructor(public  navCtrl: NavController, public  restProvider: RestService) { 
-    this.restProvider.getProducts().subscribe((products : Product[])=>{
+    this.restProvider.getPost().subscribe((posts : Post[])=>{
 
-      this.products = products;
+      this.posts = posts;
       
       });
   }
+  onGetKategoriak(){
 
-  onCreateProduct(product) {
-
-    this.restProvider.createProduct(product).subscribe((newProduct) => {
-      this.products = this.products.concat(newProduct);
-    });
+    return this.restProvider.getKategoriak()
   }
 
-  onUpdateProduct(product) {
-    this.restProvider.updateProduct(product).subscribe((updatedProduct) => {
+  onGetKategoria(id){
+
+    return this.restProvider.getKategoriaById(id)
+  }
+
+  onCreateKategoria(data) {
+
+    this.restProvider.addKategoria(data).subscribe();
+  }
+
+  onUpdateProduct(post) {
+    this.restProvider.updateKategoria(post).subscribe((updatedPost) => {
       
     });
   }
 
-  onRemoveProduct(product) {
-    this.restProvider.deleteProductById(product.id).subscribe(() => {
-      this.products = this.products.filter((e) =>  e.id !== product.id);
+  onRemoveProduct(post) {
+    this.restProvider.deleteKategoriaById(post.id).subscribe(() => {
+      this.posts = this.posts.filter((e) =>  e.id !== post.id);
     });
   }
 }

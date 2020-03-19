@@ -6,20 +6,22 @@ import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/Rx'
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Product } from '../Models/model'
 import { Kategoria } from '../Models/kategoria'
+import { Post } from '../Models/Post'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  baseUrl: string = "http://localhost:81";
+  baseUrl: string = "http://localhost:81/api";
 
   constructor(private httpClient: HttpClient) { }
 
   // Sending a GET request to /products
 
+//#region products
   public getProducts(): Observable<Product[]> {
 
     return this.httpClient
@@ -85,8 +87,9 @@ export class RestService {
       .delete(this.baseUrl + '/products/' + productId)
   }
 
+//#endregion
 
-  /////////////////////////////KATEGORIAK/////////////////////////////7
+//#region kategoriak
 
   // Sending a GET request to /kategoriak
 
@@ -107,15 +110,12 @@ export class RestService {
   // Sending a POST request to /kategoriak
 
   addKategoria(data) {
-    return new Promise((resolve, reject) => {
-      this.httpClient.post(this.baseUrl+'/kategoriak', JSON.stringify(data))
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
+    return this.httpClient.post(this.baseUrl + '/kategoriak',
+      { name: data }).pipe(
+        tap(res => {
+          return res;
+        }))
+}
 
   // Sending a GET request to /kategoriak/:id
 
@@ -153,5 +153,65 @@ export class RestService {
 
       .delete(this.baseUrl + '/kategoriak/' + kategoriaId)
   }  
+//#endregion kategoriak
 
+//#region Posts
+
+public getPost(): Observable<Post[]> {
+
+  return this.httpClient
+
+    .get<Post[]>(this.baseUrl + '/post')
+
+    .map(post => {
+
+      return post.map((post) => new Post(post));
+
+    })
+}
+
+
+
+addPost(data) {
+  return this.httpClient.post(this.baseUrl + '/post',
+    { name: data }).pipe(
+      tap(res => {
+        return res;
+      }))
+}
+
+public getPostById(postId: number): Observable<Post> {
+
+  return this.httpClient
+
+    .get(this.baseUrl + '/post/' + postId)
+
+    .map(response => {
+
+      return new Post(response);
+
+    })
+}
+
+
+public updatePost(post: Post): Observable<Post> {
+
+  return this.httpClient
+
+    .put(this.baseUrl + '/post/' + post.id, post)
+
+    .map(response => {
+
+      return new Post(response);
+    })
+}
+
+
+public deletePostById(PostId: number) {
+  return this.httpClient
+
+    .delete(this.baseUrl + '/post/' + PostId)
+}  
+
+//#endregion
 }
