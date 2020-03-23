@@ -172,9 +172,10 @@ public getPost(): Observable<Post[]> {
 
 
 
-addPost(data) {
+addPost(data:Post) {
+  data.idAutor=1
   return this.httpClient.post(this.baseUrl + '/post',
-    { name: data }).pipe(
+    { idKategoria:data.idKategoria,idAutor:data.idAutor,title:data.title,imageUrl:data.imgurl }).pipe(
       tap(res => {
         return res;
       }))
