@@ -7,9 +7,9 @@
 <ion-content>
   <form onsubmit="addPost()">
     <label for="ftitulo">Titulua:</label><br>
-    <input type="text" id="ftitulo" name="ftitulo" placeholder="Tituloa"><br>
+    <input type="text" [(ngModel)]="titulo" id="ftitulo" name="ftitulo" placeholder="Tituloa"><br>
     <label for="fkat">Kategoria:</label><br>
-    <select id="fkat" name="fkat">
+    <select id="fkat" [(ngModel)]="skat" name="fkat">
       <option value="Coronavirus">Coronavirus</option>
       <option value="Aww">Aww</option>
       <option value="RedditenKopia">RedditenKopia</option>
@@ -20,17 +20,18 @@
       <option value="TheCakeIsALie">TheCakeIsALie</option>
       <option value="ZeinDaOreoShake">ZeinDaOreoShake</option>
       <option value="ProiekturakoIdeiak">ProiekturakoIdeiak</option>
-    </select>
+    </select><br>
     <label for="ltestua">Testua:</label><br>
-    <input type="text" id="ltestua" name="ltestua" placeholder="Testua"><br><br>
+    <input type="text" [(ngModel)]="testua" id="ltestua" name="ltestua" placeholder="Testua"><br><br>
     <label for="fmedia">Media:</label><br>
-    <input type="text" id="fmedia" name="fmedia" placeholder="Media"><br>
+    <input type="text" [(ngModel)]="media" id="fmedia" name="fmedia" placeholder="Media"><br>
     <input type="submit" value="Bidali">
   </form>
+  <button myitem (click)='addPost()'>Posta gehitu</button>
   <form onsubmit="addKat()">
     <label for="fizena">Izena:</label><br>
     <input type="text" [(ngModel)]="myInput" id="fizena" name="fizena" placeholder="Kategoria izena"><br>
     <input type="submit" value="Bidali">
   </form>
-  <button myitem (click)='addKat()'>CLICK</button>
+  <button myitem (click)='addKat()'>Kategoria gehitu</button>
 </ion-content>

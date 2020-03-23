@@ -14,29 +14,29 @@ export class PostService {
       
       });
   }
-  onGetKategoriak(){
+  onGetPosts(){
 
-    return this.restProvider.getKategoriak()
+    return this.restProvider.getPost()
   }
 
-  onGetKategoria(id){
+  onGetPost(id){
 
-    return this.restProvider.getKategoriaById(id)
+    return this.restProvider.getPostById(id)
   }
 
-  onCreateKategoria(data) {
+  onCreatePost(data) {
 
-    this.restProvider.addKategoria(data).subscribe();
+    this.restProvider.addPost(data).subscribe();
   }
 
-  onUpdateProduct(post) {
-    this.restProvider.updateKategoria(post).subscribe((updatedPost) => {
+  onUpdatePost(post) {
+    this.restProvider.updatePost(post).subscribe((updatedPost) => {
       
     });
   }
 
-  onRemoveProduct(post) {
-    this.restProvider.deleteKategoriaById(post.id).subscribe(() => {
+  onRemovePost(post) {
+    this.restProvider.deletePostById(post.id).subscribe(() => {
       this.posts = this.posts.filter((e) =>  e.id !== post.id);
     });
   }
