@@ -31,6 +31,15 @@ posts:Post[];
   loadKategoriak(){
     this.kategoriaservice.onGetKategoriak().subscribe(res=>{this.kategoriak=res;
       //this.updateKategoria(res[0])
+      for(var i=0; i<res.length; i++){
+        var selector = <HTMLFormElement> document.getElementById("fkat");
+        var newoption = document.createElement("option");
+        newoption.text = res[i].name;
+        newoption.value = res[i].name;
+        selector.add(newoption);
+        console.log(res[i])
+      }
+      console.log(this.kategoriak)
 
     })
   }
