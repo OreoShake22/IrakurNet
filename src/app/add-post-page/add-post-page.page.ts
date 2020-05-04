@@ -26,6 +26,9 @@ posts:Post[];
   addKat(){
     this.kategoriaservice.onCreateKategoria(this.myInput)
     console.log(this.myInput)
+
+    var izena = <HTMLInputElement>document.getElementById("fizena");
+      izena.value = "";
   }
   //cargar todos
   loadKategoriak(){
@@ -37,9 +40,7 @@ posts:Post[];
         newoption.text = res[i].name;
         newoption.value = res[i].name;
         selector.add(newoption);
-        console.log(res[i])
       }
-      console.log(this.kategoriak)
 
     })
   }
@@ -62,6 +63,15 @@ posts:Post[];
       post.imgurl = this.media;
 
       this.postService.onCreatePost(post)
-      console.log(post)
+      console.log(post);
+
+      
+
+      var titulo = <HTMLInputElement>document.getElementById("ftitulo");
+      titulo.value = "";
+      var testua = <HTMLInputElement>document.getElementById("ltestua");
+      testua.value = "";
+      var media = <HTMLInputElement>document.getElementById("fmedia");
+      media.value = "";
     }
 }
