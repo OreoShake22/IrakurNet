@@ -17,7 +17,8 @@
     <strong>Ready to create an app?</strong>
     <p>Psssss, this is the real page <a rel="noopener noreferrer" href="https://www.reddit.com/">Reddit</a></p>
   </div>-->
-  <div class="post">
+  
+  <!--<div class="post">
     <p class="lineaArriba"><a>i/Aww</a> : <a>e/OreoShake22</a> argitaratuta orain dela 6 ordu</p>
     <h3 class="title">Norbait oso zoriontsu egon behar da</h3>
     <div class="imgVidLoQueSea">
@@ -26,8 +27,26 @@
       </iframe>
     </div>
     <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon> 13 iritzi <ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
+  </div>-->
 
+  <div *ngFor="let post of posts" class="post">
+    <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.idAutor}}</a> argitaratuta {{post.updated_at}}</p>
+    <h3 class="title">{{post.title}}</h3>
+    <div class="imgVidLoQueSea">
+      <div *ngIf="platform.is('android'); else ordenagailua">
+        <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" width="280"/>
+      <iframe class="frame-a" *ngIf="bideoaDa" width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+      </div>
+      <ng-template #ordenagailua>
+        <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" />
+      </ng-template>
+      <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon> 13 iritzi <ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
+      
+      
+    </div>
   </div>
+  
+
   <div *ngIf="!platform.is('android')" id="topKategoria">
     <div id="colorinesTop">
       <h4 id="pTop">Gaurko azpiIrakur komunitate onenak</h4>

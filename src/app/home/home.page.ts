@@ -4,6 +4,11 @@ import { Platform } from '@ionic/angular';
 import { Http } from '@angular/http';
 import { map } from 'rxjs/operators';
 
+import {KategoriakService}from '../services/kategoriak.service'
+import {Kategoria}from '../Models/kategoria'
+import {PostService}from '../services/posts.service'
+import {Post}from '../Models/Post'
+
 
 
 @Component({
@@ -13,11 +18,12 @@ import { map } from 'rxjs/operators';
 })
 export class HomePage {
 
-  constructor(public http: Http, public platform: Platform) {
+  constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService) {
     console.log(platform.is('android'));
   }
 
   posts;
+  kategoriak;
   irudiaDa = true;
   bideoaDa = false;
 
@@ -57,12 +63,26 @@ export class HomePage {
   }*/
 
   ionViewWillEnter() {
-    
+    this.getKategoriak();
+    this.getPostak();
   }
   report(){
     var r = confirm("Haurreko posta reportatu nahi duzu?");
     if (r ) {
       alert("Posta reportatu duzu, gure administrariek ahal dutenean begiratuko dute");
     }
+  }
+  getPostak(){
+    this.postService.onGetPosts().subscribe(res=>{
+      this.posts = res;
+    })
+  }
+  getKategoriak(){
+    this.kategoriaservice.onGetKategoriak().subscribe(res=>{
+      this.kategoriak = res;
+    })
+  }
+  getKategoriabyId(id){
+    this.kategoriaservice.onGetKategoria(id).subscribe(res=>{console.log(res)})
   }
 }
