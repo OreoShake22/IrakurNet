@@ -9,7 +9,7 @@ import {Kategoria}from '../Models/kategoria'
 import {PostService}from '../services/posts.service'
 import {Post}from '../Models/Post'
 
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,8 @@ import {Post}from '../Models/Post'
 })
 export class HomePage {
 
-  constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService) {
+  constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
+    , public loadingController: LoadingController) {
     console.log(platform.is('android'));
   }
 
@@ -63,8 +64,24 @@ export class HomePage {
   }*/
 
   ionViewWillEnter() {
-    this.getKategoriak();
-    this.getPostak();
+    setTimeout(() => { this.getKategoriak();
+      this.getPostak();  }, 500);
+    
+    
+  }
+  ionicViewDidEnter() {
+    setTimeout(() => {   }, 500);
+    document.getElementById("background-content").style.backgroundColor = "lightgray";
+}
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
   report(){
     var r = confirm("Haurreko posta reportatu nahi duzu?");
