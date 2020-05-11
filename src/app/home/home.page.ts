@@ -11,6 +11,8 @@ import {Post}from '../Models/Post'
 
 import { LoadingController } from '@ionic/angular';
 
+import { GlobalService } from "../global.service";
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -19,7 +21,7 @@ import { LoadingController } from '@ionic/angular';
 export class HomePage {
 
   constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
-    , public loadingController: LoadingController) {
+    , public loadingController: LoadingController, public global: GlobalService) {
     console.log(platform.is('android'));
   }
 
@@ -66,12 +68,16 @@ export class HomePage {
   ionViewWillEnter() {
     setTimeout(() => { this.getKategoriak();
       this.getPostak();  }, 500);
+      var searchValue = <HTMLInputElement>document.getElementById("searchBar");
+    console.log(searchValue.value);
+    searchValue.value = "Cambiado";
+    console.log(  this.global.myGlobalVar)
     
     
   }
   ionicViewDidEnter() {
     setTimeout(() => {   }, 500);
-    document.getElementById("background-content").style.backgroundColor = "lightgray";
+    
 }
   async presentLoading() {
     const loading = await this.loadingController.create({

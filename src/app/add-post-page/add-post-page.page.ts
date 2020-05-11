@@ -3,6 +3,8 @@ import {KategoriakService}from '../services/kategoriak.service'
 import {Kategoria}from '../Models/kategoria'
 import {PostService}from '../services/posts.service'
 import {Post}from '../Models/Post'
+
+import { GlobalService } from "../global.service";
 @Component({
   selector: 'app-add-post-page',
   templateUrl: './add-post-page.page.html',
@@ -11,13 +13,14 @@ import {Post}from '../Models/Post'
 export class AddPostPagePage implements OnInit {
 kategoriak:Kategoria[];
 posts:Post[];
-  constructor(private kategoriaservice:KategoriakService, private postService:PostService) { 
+  constructor(private kategoriaservice:KategoriakService, private postService:PostService, public global: GlobalService) { 
     
   }
 
   myInput:string="";
   titulo:string="";skat:string="";testua:string="";media:string="";
   ngOnInit() {
+    console.log(  this.global.myGlobalVar)
     this.loadKategoriak()
     //this.getKategoriabyId(1)
   }

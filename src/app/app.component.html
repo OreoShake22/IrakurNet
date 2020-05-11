@@ -5,7 +5,7 @@
         <a href="home">IrakurNet</a>
       </ion-title>
       <ion-buttons slot="end">
-        <ion-searchbar debounce="500" showCancelButton="focus"></ion-searchbar>
+        <ion-searchbar id="searchBar" debounce="500" showCancelButton="focus" value={{nombreUsuario}}></ion-searchbar>
         <ion-button (click)="login()">
           Saioa hasi
         </ion-button>
@@ -15,5 +15,6 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
