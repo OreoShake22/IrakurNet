@@ -1,0 +1,33 @@
+<ion-grid>
+	<ion-row justify-content-center>
+    <form [formGroup]="myForm" (ngSubmit)="saveData()">
+		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+			<div text-center>
+				<h4>Login Form</h4>
+			</div>
+			<div padding>
+				<ion-item>
+					<ion-input formControlName="name" type="text" placeholder="Erabiltzaile Izena"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="password" placeholder="Pasahitza"></ion-input>
+        </ion-item>
+
+        <ion-item>
+					<ion-input type="passwordConfirmation" placeholder="Pasahitza Berretsi"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+					<ion-input formControlName="email" type="text" placeholder="email"></ion-input>
+				</ion-item>
+			</div>
+
+			<div padding>
+        <ion-button size="large" block type="submit" [disabled]="!myForm.valid" expand="block">Erregistratu</ion-button>
+        <ion-button size="large" href="/home" expand="block">Logeatu?</ion-button>
+			</div>
+    </ion-col>
+  </form>
+	</ion-row>
+</ion-grid>
