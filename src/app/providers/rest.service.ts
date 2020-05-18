@@ -227,5 +227,22 @@ addUser(data:User) {
       }))
 }
 
+getUsuarioLogIn(data:User) {
+  console.log(data)
+  let urlSearchParams  = {
+    'name': data.name,
+    'password': data.password
+};
+  return this.httpClient
+
+    .get(this.baseUrl + '/user/' + {name:data.name,password:data.password})
+
+    .map(response => {
+
+      return new User(response);
+
+    })
+}
+
 //#endregion
 }

@@ -1,23 +1,18 @@
-<ion-grid>
-	<ion-row justify-content-center>
-		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-			<div text-center>
-				<h4>Login Form</h4>
-			</div>
-			<div padding>
-				<ion-item>
-					<ion-input type="text" placeholder="Username"></ion-input>
-				</ion-item>
+<ion-header>
+	<ion-toolbar>
+	  <a href="home">IrakurNet</a>
+	  <h1>Log in</h1>
+	</ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+	<form onsubmit="LogIn()">
+	  <label for="name">Izena:</label><br>
+	  <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Izena"><br>
 
-				<ion-item>
-					<ion-input type="password" placeholder="Password"></ion-input>
-				</ion-item>
-			</div>
-
-			<div padding>
-        <ion-button size="large" href="/home" expand="block">Logeatu</ion-button>
-        <ion-button size="large" href="/erregistratu" expand="block">Erregistratu</ion-button>
-			</div>
-		</ion-col>
-	</ion-row>
-</ion-grid>
+	  <label for="ltestua">Pasahitza:</label><br>
+	  <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="****"><br><br>
+	</form>
+	<button type="button" class="btn btn-primary" myitem (click)='LogIn()'>Log in</button>
+  </ion-content>
+  
