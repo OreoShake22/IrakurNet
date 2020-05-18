@@ -13,13 +13,16 @@ import { HttpModule } from '@angular/http';
 import { RestService } from  '../app/providers/rest.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from 'src/app/header/header.component'
+import { HeaderComponent } from 'src/app/header/header.component';
+
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
   
   entryComponents: [],
   imports: [HttpClientModule,BrowserModule, HttpModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule, IonicStorageModule.forRoot()],
     
   providers: [
     StatusBar,

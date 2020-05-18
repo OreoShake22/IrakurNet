@@ -5,6 +5,9 @@ import {UsersService}from '../services/users.service'
 import {User}from '../Models/User'
 
 import { Router } from '@angular/router';
+import { GlobalService } from "../global.service";
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-erregistratu',
   templateUrl: './erregistratu.page.html',
@@ -14,7 +17,7 @@ export class ErregistratuPage implements OnInit {
 name:string="";email:string="";password:string="";
 
   constructor(public navCtrl: NavController,
-    private usersService:UsersService, private router: Router) {}
+    private usersService:UsersService, private router: Router, public global: GlobalService, private storage: Storage) {}
 
     addUser(){
       var user = new User;
@@ -23,6 +26,9 @@ name:string="";email:string="";password:string="";
       user.password=this.password;
       this.usersService.onCreateUsuario(user)
       console.log(user)
+      //this.global.globalId = (res.id).toString();
+      //this.global.globalUsername = this.name;
+      this.storage.set('name', this.name);
 
       var name = <HTMLInputElement>document.getElementById("name");
       name.value = "";

@@ -1,5 +1,7 @@
 {
   "name": "IrakurNet",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

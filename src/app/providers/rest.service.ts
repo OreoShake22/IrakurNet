@@ -12,13 +12,15 @@ import { Kategoria } from '../Models/kategoria'
 import { Post } from '../Models/Post'
 import { User } from '../Models/User'
 
+import { GlobalService } from "../global.service";
+
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
   baseUrl: string = "http://localhost:81/api";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, public global: GlobalService) { }
 
   // Sending a GET request to /products
 
@@ -223,6 +225,8 @@ addUser(data:User) {
   return this.httpClient.post(this.baseUrl + '/user',
     { name:data.name,email:data.email,password:data.password }).pipe(
       tap(res => {
+        this.global.globalId = data.id.toString();
+        this.global.globalUsername = data.name;
         return res;
       }))
 }
@@ -238,6 +242,8 @@ getUsuarioLogIn(data:User) {
     .get(this.baseUrl + '/user/' + {name:data.name,password:data.password})
 
     .map(response => {
+      this.global.globalId = data.id.toString();
+      this.global.globalUsername = data.name;
 
       return new User(response);
 

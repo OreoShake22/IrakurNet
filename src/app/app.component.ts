@@ -20,7 +20,6 @@ export class AppComponent {
     private statusBar: StatusBar,
     public global: GlobalService
   ) {
-    this.global.globalId="-1"
     this.initializeApp();
   }
 

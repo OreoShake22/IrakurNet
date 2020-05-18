@@ -70,7 +70,8 @@ export class HomePage {
       this.getPostak();  }, 500);
       var searchValue = <HTMLInputElement>document.getElementById("searchBar");
     //searchValue.value = "Cambiado";
-    console.log(  this.global.globalId)
+    console.log( this.global.globalId)
+    console.log( this.global.globalUsername)
     
     
   }

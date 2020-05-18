@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
 
-  public globalId: string = "-1";
+  public globalId: string;
   public globalUsername: string;
 
   constructor() { }
