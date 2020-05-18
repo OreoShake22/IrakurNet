@@ -19,9 +19,9 @@ export class UsersService {
     return this.restProvider.getKategoriak()
   }
 
-  onGetUsuario(id){
+  onGetUsuario(user){
 
-    return this.restProvider.getKategoriaById(id)
+    return this.restProvider.getUsuarioLogIn(user)
   }
 
   onCreateUsuario(data) {
