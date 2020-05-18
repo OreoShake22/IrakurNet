@@ -10,6 +10,7 @@ import { map, tap } from 'rxjs/operators';
 import { Product } from '../Models/model'
 import { Kategoria } from '../Models/kategoria'
 import { Post } from '../Models/Post'
+import { User } from '../Models/User'
 
 @Injectable({
   providedIn: 'root'
@@ -213,6 +214,18 @@ public deletePostById(PostId: number) {
 
     .delete(this.baseUrl + '/post/' + PostId)
 }  
+
+//#endregion
+
+//#region User
+
+addUser(data:User) {
+  return this.httpClient.post(this.baseUrl + '/user',
+    { name:data.name,email:data.email,password:data.password }).pipe(
+      tap(res => {
+        return res;
+      }))
+}
 
 //#endregion
 }

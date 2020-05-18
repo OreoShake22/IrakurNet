@@ -1,34 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import {UsersService}from '../services/users.service'
+import {User}from '../Models/User'
 @Component({
   selector: 'app-erregistratu',
   templateUrl: './erregistratu.page.html',
   styleUrls: ['./erregistratu.page.scss'],
 })
 export class ErregistratuPage implements OnInit {
-
-  myForm: FormGroup;
+name:string="";email:string="";password:string="";
 
   constructor(public navCtrl: NavController,
-    public formBuilder: FormBuilder) { this.myForm = this.createMyForm();}
+    private usersService:UsersService) {}
 
-    saveData(){
-    console.log(this.myForm.value);
+    addUser(){
+      var user = new User;
+      user.name=this.name;
+      user.email=this.email;
+      user.password=this.password;
+      this.usersService.onCreateUsuario(user)
+      console.log(user)
+      
   }
 
   ngOnInit() {
-  }
-
-  private createMyForm(){
-    return this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      passwordRetry: this.formBuilder.group({
-        password: ['', Validators.required],
-        passwordConfirmation: ['', Validators.required]
-      }),
-    });
   }
 
 }
