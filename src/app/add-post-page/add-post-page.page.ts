@@ -20,7 +20,7 @@ posts:Post[];
   myInput:string="";
   titulo:string="";skat:string="";testua:string="";media:string="";
   ngOnInit() {
-    console.log(  this.global.myGlobalVar)
+    console.log(  this.global.globalId)
     this.loadKategoriak()
     //this.getKategoriabyId(1)
   }

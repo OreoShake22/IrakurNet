@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { GlobalService } from "src/app/global.service";
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -18,10 +20,9 @@ export class AppComponent {
     private statusBar: StatusBar,
     public global: GlobalService
   ) {
-    this.global.myGlobalVar="Anonimous"
+    this.global.globalId="-1"
     this.initializeApp();
   }
-  nombreUsuario  = "Anonimous";
 
     
 

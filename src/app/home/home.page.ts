@@ -69,9 +69,8 @@ export class HomePage {
     setTimeout(() => { this.getKategoriak();
       this.getPostak();  }, 500);
       var searchValue = <HTMLInputElement>document.getElementById("searchBar");
-    console.log(searchValue.value);
-    searchValue.value = "Cambiado";
-    console.log(  this.global.myGlobalVar)
+    //searchValue.value = "Cambiado";
+    console.log(  this.global.globalId)
     
     
   }

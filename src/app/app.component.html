@@ -1,20 +1,5 @@
 <ion-app>
-  <ion-header>
-    <ion-toolbar >
-      <ion-title>
-        <a href="home">IrakurNet</a>
-      </ion-title>
-      <ion-buttons slot="end">
-        <ion-searchbar id="searchBar" debounce="500" showCancelButton="focus" value={{nombreUsuario}}></ion-searchbar>
-        <ion-button (click)="login()">
-          Saioa hasi
-        </ion-button>
-        <ion-button (click)="register()">
-          Erregistratu
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <app-header></app-header>
 
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

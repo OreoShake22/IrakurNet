@@ -13,8 +13,9 @@ import { HttpModule } from '@angular/http';
 import { RestService } from  '../app/providers/rest.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from 'src/app/header/header.component'
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent],
   
   entryComponents: [],
   imports: [HttpClientModule,BrowserModule, HttpModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,
