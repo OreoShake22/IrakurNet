@@ -225,8 +225,8 @@ addUser(data:User) {
   return this.httpClient.post(this.baseUrl + '/user',
     { name:data.name,email:data.email,password:data.password }).pipe(
       tap(res => {
-        this.global.globalId = data.id.toString();
-        this.global.globalUsername = data.name;
+        //this.global.globalId = data.id.toString();
+        //this.global.globalUsername = data.name;
         return res;
       }))
 }
@@ -242,8 +242,8 @@ getUsuarioLogIn(data:User) {
     .get(this.baseUrl + '/user/' + {name:data.name,password:data.password})
 
     .map(response => {
-      this.global.globalId = data.id.toString();
-      this.global.globalUsername = data.name;
+      //this.global.globalId = data.id.toString();
+      //this.global.globalUsername = data.name;
 
       return new User(response);
 

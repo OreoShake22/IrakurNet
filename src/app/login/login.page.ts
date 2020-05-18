@@ -28,10 +28,9 @@ export class LoginPage implements OnInit {
       console.log(res);
       //this.global.globalId = (res.id).toString();
       this.storage.set('id', res.id);
-      this.storage.set('id', res.id);
       //this.global.globalUsername = res.name;
-      this.storage.set('name', res.name);
-      this.storage.set('name', res.name);
+      this.storage.set('name', this.name);
+      this.storage.set('name', this.name);
 
     })
 

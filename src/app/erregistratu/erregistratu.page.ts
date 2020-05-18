@@ -29,6 +29,7 @@ name:string="";email:string="";password:string="";
       //this.global.globalId = (res.id).toString();
       //this.global.globalUsername = this.name;
       this.storage.set('name', this.name);
+      this.storage.set('name', this.name);
 
       var name = <HTMLInputElement>document.getElementById("name");
       name.value = "";

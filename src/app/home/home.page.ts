@@ -12,6 +12,7 @@ import {Post}from '../Models/Post'
 import { LoadingController } from '@ionic/angular';
 
 import { GlobalService } from "../global.service";
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ import { GlobalService } from "../global.service";
 export class HomePage {
 
   constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
-    , public loadingController: LoadingController, public global: GlobalService) {
+    , public loadingController: LoadingController, public global: GlobalService, public storage: Storage) {
     console.log(platform.is('android'));
   }
 
@@ -65,13 +66,13 @@ export class HomePage {
     });
   }*/
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     setTimeout(() => { this.getKategoriak();
       this.getPostak();  }, 500);
       var searchValue = <HTMLInputElement>document.getElementById("searchBar");
     //searchValue.value = "Cambiado";
-    console.log( this.global.globalId)
-    console.log( this.global.globalUsername)
+    console.log( await this.storage.get("id"));
+    console.log( await this.storage.get("name"));
     
     
   }
