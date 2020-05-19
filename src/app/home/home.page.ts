@@ -8,6 +8,8 @@ import {KategoriakService}from '../services/kategoriak.service'
 import {Kategoria}from '../Models/kategoria'
 import {PostService}from '../services/posts.service'
 import {Post}from '../Models/Post'
+import {UsersService}from '../services/users.service'
+import {User}from '../Models/User'
 
 import { LoadingController } from '@ionic/angular';
 
@@ -22,12 +24,13 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
-    , public loadingController: LoadingController, public global: GlobalService, public storage: Storage) {
+    , public loadingController: LoadingController, public global: GlobalService, public storage: Storage, private userService:UsersService) {
     console.log(platform.is('android'));
   }
 
   posts;
   kategoriak;
+  users;
   irudiaDa = true;
   bideoaDa = false;
 
@@ -71,8 +74,8 @@ export class HomePage {
       this.getPostak();  }, 500);
       var searchValue = <HTMLInputElement>document.getElementById("searchBar");
     //searchValue.value = "Cambiado";
-    console.log( await this.storage.get("id"));
-    console.log( await this.storage.get("name"));
+    console.log("id:", await this.storage.get("id"));
+    console.log("name:", await this.storage.get("name"));
     
     
   }
@@ -108,5 +111,11 @@ export class HomePage {
   }
   getKategoriabyId(id){
     this.kategoriaservice.onGetKategoria(id).subscribe(res=>{console.log(res)})
+  }
+
+  getUsers(){
+    this.userService.onGetUsuarios().subscribe(res=>{
+      this.users = res;
+    })
   }
 }

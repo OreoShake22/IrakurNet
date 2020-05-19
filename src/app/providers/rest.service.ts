@@ -250,5 +250,7 @@ getUsuarioLogIn(data:User) {
     })
 }
 
+
+
 //#endregion
 }
