@@ -27,25 +27,27 @@ export class LoginPage implements OnInit {
     var user = new User;
     user.name=this.name;
     user.password=this.password;
-    this.usersService.onGetUsuario(user).subscribe(res=>{
-      this.user = res;
-      console.log(res);
-      //this.global.globalId = (res.id).toString();
-      this.storage.set('id', res.id);
-      //this.global.globalUsername = res.name;
-      this.storage.set('name', this.name);
-      this.storage.set('name', this.name);
-
+    this.usersService.onGetUsuario(user).subscribe(response=>{
       var name = <HTMLInputElement>document.getElementById("name");
       name.value = "";
       var password = <HTMLInputElement>document.getElementById("password");
       password.value = "";
+      location.reload();
+    });
+      
+      //this.global.globalId = (res.id).toString();
+      
+      //this.global.globalUsername = res.name;
+      //this.storage.set('name', this.name);
+      
+
+      
 
       
      
-      location.reload();
+      
 
-    })
+    
 
     
   }

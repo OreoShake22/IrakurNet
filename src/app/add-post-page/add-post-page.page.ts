@@ -20,9 +20,11 @@ posts:Post[];
   }
 
   myInput:string="";
+  idAutor=0
   titulo:string="";skat:string="";testua:string="";media:string="";
   async ngOnInit() {
       var username = await this.storage.get('name');
+      this.idAutor=await this.storage.get('id')
       if(username == null){
         this.router.navigateByUrl('/home');
       }
@@ -70,7 +72,7 @@ posts:Post[];
       post.title = this.titulo;
       post.idKategoria = 1;
       post.imgurl = this.media;
-
+      post.idAutor = this.idAutor
       this.postService.onCreatePost(post)
       console.log(post);
 

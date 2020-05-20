@@ -8,20 +8,11 @@ import { User } from '../Models/User'
 export class UsersService {
   private  user : User[] = [];
   constructor(public  navCtrl: NavController, public  restProvider: RestService) { 
-    this.restProvider.getKategoriak().subscribe((user : User[])=>{
-
-      this.user = user;
-      
-      });
-  }
-  onGetUsuarios(){
-
-    return this.restProvider.getKategoriak()
   }
 
-  onGetUsuario(user){
+  onGetUsuario(data){
 
-    return this.restProvider.getUsuarioLogIn(user)
+    return this.restProvider.getUsers(data)
   }
 
   onCreateUsuario(data) {

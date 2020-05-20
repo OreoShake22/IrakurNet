@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-
+import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs';
 
 import 'rxjs/add/operator/catch';
@@ -20,7 +20,7 @@ import { GlobalService } from "../global.service";
 export class RestService {
   baseUrl: string = "http://localhost:81/api";
 
-  constructor(private httpClient: HttpClient, public global: GlobalService) { }
+  constructor(private httpClient: HttpClient, public global: GlobalService, private storage: Storage) { }
 
   // Sending a GET request to /products
 
@@ -176,7 +176,6 @@ public getPost(): Observable<Post[]> {
 
 
 addPost(data:Post) {
-  data.idAutor=1
   return this.httpClient.post(this.baseUrl + '/post',
     { idKategoria:data.idKategoria,idAutor:data.idAutor,title:data.title,imageUrl:data.imgurl }).pipe(
       tap(res => {
@@ -246,6 +245,25 @@ getUsuarioLogIn(data:User) {
       //this.global.globalUsername = data.name;
 
       return new User(response);
+
+    })
+}
+
+public getUsers(data): Observable<User[]> {
+
+  return this.httpClient
+
+    .get<User[]>(this.baseUrl + '/user')
+
+    .map(user => {
+      user.forEach(u => {
+        console.log(u.password)
+        if(u.name == data.name && u.password == data.password){
+          this.storage.set('name', u.name);
+          this.storage.set('id', u.id);
+        }
+      });
+      return user.map((user) => new User(user));
 
     })
 }
