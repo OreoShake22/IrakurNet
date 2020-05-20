@@ -28,7 +28,8 @@ export class HomePage {
     console.log(platform.is('android'));
   }
 
-  posts;
+  posts: Post[] = [];
+  textoBuscar = '';
   kategoriak;
   users;
   irudiaDa = true;
@@ -69,9 +70,15 @@ export class HomePage {
     });
   }*/
 
+  buscar(event){
+    console.log(event.srcElement.value);
+  }
+
   async ionViewWillEnter() {
     setTimeout(() => { this.getKategoriak();
-      this.getPostak();  }, 500);
+      this.getPostak(); 
+     }, 500);
+     this.textoBuscar = await this.storage.get('textoBuscar');
       var searchValue = <HTMLInputElement>document.getElementById("searchBar");
     //searchValue.value = "Cambiado";
     console.log("id:", await this.storage.get("id"));

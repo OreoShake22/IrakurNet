@@ -4,7 +4,7 @@
       <a href="home">IrakurNet</a>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-searchbar id="searchBar" debounce="500" showCancelButton="focus"></ion-searchbar>
+      <ion-searchbar id="searchBar" debounce="500" (change)="buscar($event)" showCancelButton="focus"></ion-searchbar>
       <!--<div *ngIf="{{username ==''}}; else logeauta">-->
         <ion-button href="login" *ngIf="username == null">
           Saioa hasi
@@ -15,6 +15,9 @@
         <ion-title *ngIf="username != null">
           {{username}}
         </ion-title>
+        <ion-button href="add" *ngIf="username != null">
+          Post berria
+        </ion-button>
         <ion-button (click)="logout()" *ngIf="username != null">
           Saioa itxi
         </ion-button>

@@ -4,7 +4,9 @@ import {Kategoria}from '../Models/kategoria'
 import {PostService}from '../services/posts.service'
 import {Post}from '../Models/Post'
 
+import { Router } from '@angular/router';
 import { GlobalService } from "../global.service";
+import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-add-post-page',
   templateUrl: './add-post-page.page.html',
@@ -13,13 +15,17 @@ import { GlobalService } from "../global.service";
 export class AddPostPagePage implements OnInit {
 kategoriak:Kategoria[];
 posts:Post[];
-  constructor(private kategoriaservice:KategoriakService, private postService:PostService, public global: GlobalService) { 
+  constructor(private kategoriaservice:KategoriakService, private postService:PostService, private router: Router, public global: GlobalService, private storage: Storage) { 
     
   }
 
   myInput:string="";
   titulo:string="";skat:string="";testua:string="";media:string="";
-  ngOnInit() {
+  async ngOnInit() {
+      var username = await this.storage.get('name');
+      if(username == null){
+        this.router.navigateByUrl('/home');
+      }
     console.log(  this.global.globalId)
     this.loadKategoriak()
     //this.getKategoriabyId(1)

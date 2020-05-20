@@ -29,7 +29,7 @@
     <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon> 13 iritzi <ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
   </div>-->
   
-  <div *ngFor="let post of posts" class="post contenido">
+  <div *ngFor="let post of posts | filtro:textoBuscar" class="post contenido">
     <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.idAutor}}</a> argitaratuta {{post.updated_at}}</p>
     <h3 class="title">{{post.title}}</h3>
     <div class="imgVidLoQueSea">

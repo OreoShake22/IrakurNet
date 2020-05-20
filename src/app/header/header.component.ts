@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   //globalId = this.global.globalId;
   //globalUsername = this.global.globalUsername;
   username;
+  textoBuscar = '';
 
   async ngOnInit() {
     this.username = await this.storage.get('name');
@@ -34,6 +35,14 @@ export class HeaderComponent implements OnInit {
       location.reload();
       this.router.navigateByUrl('/home');
     });
+  }
+
+  buscar(event){
+    this.textoBuscar = event.srcElement.value;
+    this.storage.set("textoBuscar", this.textoBuscar);
+    this.storage.set("textoBuscar", this.textoBuscar);
+
+    location.reload();
   }
 
 }
