@@ -12,7 +12,7 @@ export  class  Post {
 
     createdData: string;
 
-    userName: string;
+    name: string;
     
     constructor(values: Object = {}) {
     

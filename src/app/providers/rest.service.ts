@@ -167,7 +167,6 @@ public getPost(): Observable<Post[]> {
     .get<Post[]>(this.baseUrl + '/post')
 
     .map(post => {
-
       return post.map((post) => new Post(post));
 
     })
