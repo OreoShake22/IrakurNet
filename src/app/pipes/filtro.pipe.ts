@@ -7,7 +7,7 @@ import { Post } from 'src/app/Models/Post'
 export class FiltroPipe implements PipeTransform {
 
   transform(posts: Post[], texto: string): Post[] {
-    if(texto.length === 0 || texto == ' ' || texto == null){
+    if(texto == '' || texto == ' ' || texto == null || texto.length === 0 ){
       return posts;
     }
     texto = texto.toLocaleLowerCase();

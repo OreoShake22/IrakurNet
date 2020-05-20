@@ -36,9 +36,7 @@ export class LoginPage implements OnInit {
       this.storage.set('name', this.name);
       this.storage.set('name', this.name);
 
-    })
-
-    var name = <HTMLInputElement>document.getElementById("name");
+      var name = <HTMLInputElement>document.getElementById("name");
       name.value = "";
       var password = <HTMLInputElement>document.getElementById("password");
       password.value = "";
@@ -46,5 +44,9 @@ export class LoginPage implements OnInit {
       
      
       location.reload();
+
+    })
+
+    
   }
 }
