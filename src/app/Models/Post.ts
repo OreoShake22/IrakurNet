@@ -11,6 +11,8 @@ export  class  Post {
     imgurl: string;
 
     createdData: string;
+
+    userName: string;
     
     constructor(values: Object = {}) {
     

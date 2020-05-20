@@ -120,9 +120,4 @@ export class HomePage {
     this.kategoriaservice.onGetKategoria(id).subscribe(res=>{console.log(res)})
   }
 
-  getUsers(){
-    this.userService.onGetUsuarios().subscribe(res=>{
-      this.users = res;
-    })
-  }
 }
