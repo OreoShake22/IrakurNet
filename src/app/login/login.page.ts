@@ -16,7 +16,11 @@ export class LoginPage implements OnInit {
   constructor(private usersService:UsersService, private router: Router, public global: GlobalService, private storage: Storage) { }
   name:string="";password:string="";
   user;
-  ngOnInit() {
+  async ngOnInit() {
+    var username = await this.storage.get('name');
+    if(username != null){
+      this.router.navigateByUrl('/home');
+    }
   }
 
   LogIn(){
@@ -40,8 +44,7 @@ export class LoginPage implements OnInit {
       password.value = "";
 
       
-      setTimeout(function(){
-    }, 2000);
-      this.router.navigate(['/home'])
+     
+      location.reload();
   }
 }

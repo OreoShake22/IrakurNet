@@ -4,18 +4,18 @@
       <a href="home">IrakurNet</a>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-searchbar id="searchBar" debounce="500" showCancelButton="focus" value={{username}}></ion-searchbar>
+      <ion-searchbar id="searchBar" debounce="500" showCancelButton="focus"></ion-searchbar>
       <!--<div *ngIf="{{username ==''}}; else logeauta">-->
-        <ion-button href="login" *ngIf="username != 'null'">
+        <ion-button href="login" *ngIf="username == null">
           Saioa hasi
         </ion-button>
-        <ion-button href="erregistratu" *ngIf="username !='null'">
+        <ion-button href="erregistratu" *ngIf="username == null">
           Erregistratu
         </ion-button>
-        <ion-title *ngIf="username">
+        <ion-title *ngIf="username != null">
           {{username}}
         </ion-title>
-        <ion-button (click)="logout()" *ngIf="username">
+        <ion-button (click)="logout()" *ngIf="username != null">
           Saioa itxi
         </ion-button>
       <!--</div>

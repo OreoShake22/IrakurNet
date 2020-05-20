@@ -1,23 +1,15 @@
-<!--<ion-grid>
-	<ion-row justify-content-center>
-		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12" id="columnaLogin">
-			<div text-center>
-				<h4>Login Form</h4>
-			</div>
-			<div padding>
-				<ion-item>
-					<ion-input type="text" placeholder="Username"></ion-input>
-				</ion-item>-->
 
   
-  <ion-content >
-	<form onsubmit="LogIn()" id="logIon">
-	  <label for="name">Izena:</label><br>
-	  <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Izena"><br>
-
-	  <label for="ltestua">Pasahitza:</label><br>
-	  <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="****"><br><br>
+  <ion-content padding>
+	<form #form="ngForm" onsubmit="LogIn()" id="logIon">
+		<ion-item>
+	  <ion-label position="floating" for="name">Izena:</ion-label><br>
+	  <input type="text" ngModel [(ngModel)]="name" id="name" name="name" placeholder="Izena">
+		</ion-item>
+		<ion-item>
+	  <ion-label position="floating" for="ltestua">Pasahitza:</ion-label><br>
+	  <input type="password" ngModel [(ngModel)]="password" id="password" name="password" placeholder="****">
+		</ion-item>
 	</form>
-	<button type="button" class="btn btn-primary" myitem (click)='LogIn()'>Log in</button>
+	<ion-button expand="full" color="primary" type="button" class="btn btn-primary" myitem (click)='LogIn()'>Log in</ion-button>
   </ion-content>
-  

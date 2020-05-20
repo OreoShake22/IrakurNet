@@ -30,7 +30,7 @@
   </div>-->
   
   <div *ngFor="let post of posts" class="post contenido">
-    <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{users[post.idAutor-1].name}}</a> argitaratuta {{post.updated_at}}</p>
+    <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.idAutor}}</a> argitaratuta {{post.updated_at}}</p>
     <h3 class="title">{{post.title}}</h3>
     <div class="imgVidLoQueSea">
       <div *ngIf="platform.is('android'); else ordenagailua">

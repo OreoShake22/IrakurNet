@@ -38,11 +38,15 @@ name:string="";email:string="";password:string="";
       var email = <HTMLInputElement>document.getElementById("email");
       email.value = "";
 
-      this.router.navigate(['/home'])
+      location.reload();
       
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    var username = await this.storage.get('name');
+    if(username != null){
+      this.router.navigateByUrl('/home');
+    }
   }
 
 }

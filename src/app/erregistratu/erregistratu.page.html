@@ -1,16 +1,17 @@
-
-  
-  <ion-content>
-	<form onsubmit="addUser()" id="registerIon">
-	  <label for="name">Izena:</label><br>
-	  <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Izena"><br>
-
-	  <label for="ltestua">Pasahitza:</label><br>
-	  <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="****"><br><br>
-
-	  <label for="email">Email:</label><br>
-	  <input type="text" [(ngModel)]="email" id="email" name="email" placeholder="email"><br>
+<ion-content padding>
+	<form #form="ngForm" onsubmit="addUser()" id="registerIon">
+		<ion-item>
+			<ion-label position="floating" for="name">Izena:</ion-label><br>
+			<input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Izena">
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating" for="ltestua">Pasahitza:</ion-label><br>
+			<input type="password" [(ngModel)]="password" id="password" name="password" placeholder="****">
+		</ion-item>
+		<ion-item>
+			<ion-label position="floating" for="email">Email:</ion-label><br>
+			<input type="text" [(ngModel)]="email" id="email" name="email" placeholder="email"><br>
+		</ion-item>
 	</form>
-	<button type="button" class="btn btn-primary" myitem (click)='addUser()'>Erregistratu</button>
-  </ion-content>
-  
+	<ion-button padding expand="full" color="primary" type="button" class="btn btn-primary" myitem (click)='addUser()'>Erregistratu</ion-button>
+</ion-content>
