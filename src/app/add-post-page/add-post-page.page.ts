@@ -69,8 +69,17 @@ posts:Post[];
     //añadir Post
     addPost(){
       var post = new Post;
+
+      var e = <HTMLSelectElement> document.getElementById("fkat");
+      this.kategoriak.forEach(kategoria => {
+        if(e.options[e.selectedIndex].value == kategoria.name){
+          post.idKategoria = kategoria.id;
+        }
+      });
+
+      
       post.title = this.titulo;
-      post.idKategoria = 1;
+      
       post.imgurl = this.media;
       post.idAutor = this.idAutor
       this.postService.onCreatePost(post)
