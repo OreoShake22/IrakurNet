@@ -33,8 +33,8 @@
     <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
     <h3 class="title">{{post.title}}</h3>
     <div class="imgVidLoQueSea">
-      <div *ngIf="platform.is('android'); else ordenagailua">
-        <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" width="280"/>
+      <div text-center *ngIf="platform.is('android'); else ordenagailua">
+        <ion-img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" width="280"></ion-img>
       <iframe class="frame-a" *ngIf="bideoaDa" width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
       </div>
       <ng-template #ordenagailua>
@@ -45,7 +45,6 @@
       
     </div>
   </div>
-  <button ><a href="../add">Ayudaaaa</a></button>
   
 
   <!--<div *ngIf="!platform.is('android')" id="topKategoria">

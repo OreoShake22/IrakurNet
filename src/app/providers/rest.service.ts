@@ -11,6 +11,7 @@ import { Product } from '../Models/model'
 import { Kategoria } from '../Models/kategoria'
 import { Post } from '../Models/Post'
 import { User } from '../Models/User'
+import { Comment } from '../Models/comment'
 
 import { GlobalService } from "../global.service";
 
@@ -268,6 +269,65 @@ public getUsers(data): Observable<User[]> {
 }
 
 
+
+//#endregion
+
+//#region Comments
+
+public getComment(): Observable<Comment[]> {
+
+  return this.httpClient
+
+    .get<Comment[]>(this.baseUrl + '/comment')
+
+    .map(comment => {
+      return comment.map((comment) => new Comment(comment));
+
+    })
+}
+
+
+
+addComment(data:Comment) {
+  return this.httpClient.post(this.baseUrl + '/comment',
+    { idPost:data.idPost,idAutor:data.idAutor,texto:data.texto}).pipe(
+      tap(res => {
+        return res;
+      }))
+}
+
+public getCommentById(commentId: number): Observable<Comment> {
+
+  return this.httpClient
+
+    .get(this.baseUrl + '/comment/' + commentId)
+
+    .map(response => {
+
+      return new Comment(response);
+
+    })
+}
+
+
+public updateComment(comment: Comment): Observable<Comment> {
+
+  return this.httpClient
+
+    .put(this.baseUrl + '/comment/' + comment.id, comment)
+
+    .map(response => {
+
+      return new Comment(response);
+    })
+}
+
+
+public deleteCommentById(commentId: number) {
+  return this.httpClient
+
+    .delete(this.baseUrl + '/comment/' + commentId)
+}  
 
 //#endregion
 }
