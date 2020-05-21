@@ -7,7 +7,8 @@ const routes: Routes = [
   {
     path: 'add',
     loadChildren: () => import('./add-post-page/add-post-page.module').then( m => m.AddPostPagePageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -15,7 +16,10 @@ const routes: Routes = [
     path: 'erregistratu',
     loadChildren: () => import('./erregistratu/erregistratu.module').then( m => m.ErregistratuPageModule)
   },
-
+  {
+    path: 'post/:id',
+    loadChildren: () => import('./post-detail/post-detail.module').then( m => m.PostDetailPageModule)
+  },
 
 
 ];

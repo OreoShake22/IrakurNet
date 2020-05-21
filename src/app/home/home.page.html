@@ -31,7 +31,7 @@
   
   <div *ngFor="let post of posts | filtro:textoBuscar" class="post contenido">
     <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
-    <h3 class="title">{{post.title}}</h3>
+    <h3 class="title"><a routerLink="/post/{{post.id}}">{{post.title}}</a></h3>
     <div class="imgVidLoQueSea">
       <div text-center *ngIf="platform.is('android'); else ordenagailua">
         <ion-img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" width="280"></ion-img>
@@ -40,7 +40,7 @@
       <ng-template #ordenagailua>
         <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" />
       </ng-template>
-      <p class="footer"><!--<ion-icon name="chatbubbles-outline"></ion-icon> 13 iritzi --><ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
+      <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon><a routerLink="/post/{{post.id}}"> Zure iritzia eman</a><ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
       
       
     </div>
