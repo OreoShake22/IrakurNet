@@ -30,7 +30,7 @@
   </div>-->
   
   <div *ngFor="let post of posts | filtro:textoBuscar" class="post contenido">
-    <p class="lineaArriba"><a>i/{{kategoriak[post.idKategoria-1].name}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
+    <p class="lineaArriba"><a>i/{{post.kategoria}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
     <h3 class="title"><a routerLink="/post/{{post.id}}">{{post.title}}</a></h3>
     <div class="imgVidLoQueSea">
       <div text-center *ngIf="platform.is('android'); else ordenagailua">

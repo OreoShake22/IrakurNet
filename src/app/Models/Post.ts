@@ -13,6 +13,8 @@ export  class  Post {
     createdData: string;
 
     name: string;
+
+    kategoria: string;
     
     constructor(values: Object = {}) {
     
