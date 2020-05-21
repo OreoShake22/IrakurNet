@@ -18,19 +18,26 @@ export class PostDetailPage implements OnInit {
     private location: Location,
     public platform: Platform) { }
 
-  post: Post ;  
-  idKategoria = 0; name = ''; updated_at = ''; title = ''; imageUrl = '';
+    irudiaDa = true;
+    bideoaDa = false;
+  post: Post ={
+    id : 0,
+    idAutor: 0,
+    idKategoria : 0,
+    kategoria : '',
+    name : '',
+    createdData : '',
+    title : '',
+    imgurl : ''
+  };  
   getPost(): void {     
     const id = +this.route.snapshot.paramMap.get('id');       	
-    this.postService.onGetPost(id)          		
-      .subscribe(post => {
-        this.idKategoria = post.idKategoria;
-        this.name = post.name;
-        this.updated_at = post.createdData;
-        this.title = post.title;
-        this.imageUrl = post.imgurl;
+    this.postService.onGetPost(id).subscribe(post => {
+      console.log(post);
+        this.post = post[0];
+        document.getElementsByClassName("irudia")[0].setAttribute("src", post.imgurl);
 
-      },          					  				  error => console.log("Error :: " + error));  	
+      }, error => console.log("Error :: " + error));  	
     }  
 
     goBack(): void { 

@@ -1,13 +1,13 @@
 <div class="post contenido">
-  <p class="lineaArriba"><a>i/{{idKategoria}}</a> : <a>e/{{name}}</a> argitaratuta {{updated_at}}</p>
-  <h3 class="title">{{title}}</h3>
+  <p class="lineaArriba">i/{{post.idKategoria-1}} : e/{{post.name}} argitaratuta {{post.updated_at}}</p>
+  <h3 class="title">{{post.title}}</h3>
   <div class="imgVidLoQueSea">
     <div text-center *ngIf="platform.is('android'); else ordenagailua">
-      <ion-img class="irudia" *ngIf="irudiaDa"  src="{{imageUrl}}" width="280"></ion-img>
+      <ion-img class="irudia" *ngIf="irudiaDa"  src="{{post.imgurl}}" width="280"></ion-img>
     <iframe class="frame-a" *ngIf="bideoaDa" width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
     </div>
     <ng-template #ordenagailua>
-      <img class="irudia" *ngIf="irudiaDa"  src="{{imageUrl}}" />
+      <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" />
     </ng-template>
     
     
