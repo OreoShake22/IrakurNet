@@ -23,7 +23,14 @@ export class PostDetailPage implements OnInit {
   getPost(): void {     
     const id = +this.route.snapshot.paramMap.get('id');       	
     this.postService.onGetPost(id)          		
-      .subscribe(post => {this.post = post},          					  				  error => console.log("Error :: " + error));  	
+      .subscribe(post => {
+        this.idKategoria = post.idKategoria;
+        this.name = post.name;
+        this.updated_at = post.createdData;
+        this.title = post.title;
+        this.imageUrl = post.imgurl;
+
+      },          					  				  error => console.log("Error :: " + error));  	
     }  
 
     goBack(): void { 
