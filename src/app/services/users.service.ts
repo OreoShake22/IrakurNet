@@ -17,7 +17,7 @@ export class UsersService {
 
   onCreateUsuario(data) {
 
-    this.restProvider.addUser(data).subscribe();
+    return this.restProvider.addUser(data);
   }
 
   onUpdateUsuario(user) {

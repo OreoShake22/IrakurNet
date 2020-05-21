@@ -24,14 +24,9 @@ name:string="";email:string="";password:string="";
       user.name=this.name;
       user.email=this.email;
       user.password=this.password;
-      this.usersService.onCreateUsuario(user)
-      console.log(user)
-      //this.global.globalId = (res.id).toString();
-      //this.global.globalUsername = this.name;
-      this.storage.set('name', this.name);
-      this.storage.set('name', this.name);
-
-      var name = <HTMLInputElement>document.getElementById("name");
+      this.usersService.onCreateUsuario(user).subscribe(result =>{
+        this.usersService.onGetUsuario(user).subscribe(res =>{
+          var name = <HTMLInputElement>document.getElementById("name");
       name.value = "";
       var password = <HTMLInputElement>document.getElementById("password");
       password.value = "";
@@ -39,6 +34,11 @@ name:string="";email:string="";password:string="";
       email.value = "";
 
       location.reload();
+        })
+        
+      })
+
+      
       
   }
 
