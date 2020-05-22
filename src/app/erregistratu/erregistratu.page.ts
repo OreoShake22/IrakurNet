@@ -20,23 +20,35 @@ name:string="";email:string="";password:string="";
     private usersService:UsersService, private router: Router, public global: GlobalService, private storage: Storage) {}
 
     addUser(){
+      var open : boolean = true
       var user = new User;
       user.name=this.name;
       user.email=this.email;
       user.password=this.password;
-      this.usersService.onCreateUsuario(user).subscribe(result =>{
-        this.usersService.onGetUsuario(user).subscribe(res =>{
-          var name = <HTMLInputElement>document.getElementById("name");
-      name.value = "";
-      var password = <HTMLInputElement>document.getElementById("password");
-      password.value = "";
-      var email = <HTMLInputElement>document.getElementById("email");
-      email.value = "";
-
-      location.reload();
+      this.usersService.onComprobarUsuarios().subscribe(names =>{
+        names.forEach(name=>{
+          if(user.name == name.name){
+            open=false
+            alert("Ese nombre de usuario ya esta en uso")
+          }
         })
-        
+        if(open){
+          this.usersService.onCreateUsuario(user).subscribe(result =>{
+            this.usersService.onGetUsuario(user).subscribe(res =>{
+              var name = <HTMLInputElement>document.getElementById("name");
+          name.value = "";
+          var password = <HTMLInputElement>document.getElementById("password");
+          password.value = "";
+          var email = <HTMLInputElement>document.getElementById("email");
+          email.value = "";
+    
+          location.reload();
+            })
+            
+          })
+        }
       })
+      
 
       
       

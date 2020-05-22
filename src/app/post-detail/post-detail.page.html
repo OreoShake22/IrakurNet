@@ -21,7 +21,7 @@
 <ion-button type="button" class="btn btn-primary" myitem (click)='addComment()'>Iritzia gehitu</ion-button>
 <div *ngFor="let comment of comments" class="post contenido">
   <p class="lineaArriba">Argitaratuta {{comment.updated_at}}</p>
-  <h3 class="title">{{comment.idAutor}}</h3>
+  <h3 class="title">{{comment.name}}</h3>
   <p>{{comment.texto}}</p>
 </div>
 </ion-content>

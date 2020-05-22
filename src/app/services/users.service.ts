@@ -15,6 +15,11 @@ export class UsersService {
     return this.restProvider.getUsers(data)
   }
 
+  onComprobarUsuarios(){
+    
+    return this.restProvider.getUserName()
+  }
+
   onCreateUsuario(data) {
 
     return this.restProvider.addUser(data);

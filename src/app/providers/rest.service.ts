@@ -249,6 +249,18 @@ getUsuarioLogIn(data:User) {
     })
 }
 
+public getUserName(): Observable<User[]> {
+
+  return this.httpClient
+
+    .get<Post[]>(this.baseUrl + '/user')
+
+    .map(user => {
+      return user.map((user) => new User(user));
+
+    })
+}
+
 public getUsers(data): Observable<User[]> {
 
   return this.httpClient
@@ -257,7 +269,6 @@ public getUsers(data): Observable<User[]> {
 
     .map(user => {
       user.forEach(u => {
-        console.log(u.password)
         if(u.name == data.name && u.password == data.password){
           this.storage.set('name', u.name);
           this.storage.set('id', u.id);
@@ -267,6 +278,8 @@ public getUsers(data): Observable<User[]> {
 
     })
 }
+
+
 
 
 
