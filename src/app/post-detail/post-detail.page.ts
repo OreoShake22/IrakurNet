@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from './../services/posts.service';
 import { Post } from './../Models/Post';
+import { CommentService } from './../services/comment.service';
+import { Comment } from './../Models/comment';
 import { Location} from '@angular/common';
 
 import { Platform } from '@ionic/angular';
@@ -16,10 +18,13 @@ export class PostDetailPage implements OnInit {
   constructor(private route: ActivatedRoute, 
     private postService: PostService, 
     private location: Location,
-    public platform: Platform) { }
+    public platform: Platform,
+    private commentService: CommentService) { }
 
+    testua:string="";
     irudiaDa = true;
     bideoaDa = false;
+    comments : Comment[] = [];
   post: Post ={
     id : 0,
     idAutor: 0,
@@ -37,6 +42,8 @@ export class PostDetailPage implements OnInit {
         this.post = post[0];
         document.getElementsByClassName("irudia")[0].setAttribute("src", post.imgurl);
 
+        this.getComment();
+
       }, error => console.log("Error :: " + error));  	
     }  
 
@@ -50,5 +57,34 @@ export class PostDetailPage implements OnInit {
   ionViewWillEnter(){
     this.getPost();  
   }
+
+  //añadir Post
+  addComment(){
+    var comment = new Comment();
+
+
+    
+    comment.texto = this.testua;
+    
+    comment.idAutor = this.post.idAutor;
+    comment.idPost = this.post.id;
+    this.commentService.onCreateComment(comment)
+    console.log(comment);
+
+    
+
+    var testua = <HTMLInputElement>document.getElementById("ltestua");
+    testua.value = "";
+    location.reload();
+  }
+
+  getComment(): void {     
+    const id = +this.route.snapshot.paramMap.get('id');       	
+    this.commentService.onGetComment(this.post.id).subscribe(comment => {
+      console.log(comment);
+        this.comments.push(comment);
+
+      }, error => console.log("Error :: " + error));  	
+    } 
 
 }
