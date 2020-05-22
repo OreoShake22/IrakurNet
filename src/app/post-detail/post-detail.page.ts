@@ -24,7 +24,7 @@ export class PostDetailPage implements OnInit {
     testua:string="";
     irudiaDa = true;
     bideoaDa = false;
-    comments : Comment[] = [];
+    comments : Comment[] = [{id:0, idAutor:0, idPost:0, texto: '', createdData:''}];
   post: Post ={
     id : 0,
     idAutor: 0,
@@ -81,8 +81,9 @@ export class PostDetailPage implements OnInit {
   getComment(): void {     
     const id = +this.route.snapshot.paramMap.get('id');       	
     this.commentService.onGetComment(this.post.id).subscribe(comment => {
-      console.log(comment);
-        this.comments.push(comment);
+      console.log("COMMENTS",comment);
+        this.comments.push(comment[0]);
+        console.log(this.comments);
 
       }, error => console.log("Error :: " + error));  	
     } 
