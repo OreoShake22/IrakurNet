@@ -113,7 +113,17 @@ export class HomePage {
   }
   getKategoriak(){
     this.kategoriaservice.onGetKategoriak().subscribe(res=>{
-      this.kategoriak = res;
+      if(res.length<=10){
+        this.kategoriak = res;
+      }
+      else{
+        var kats = [];
+        for(var i=0; i<=10; i++){
+          kats.push(res[i]);
+        }
+        this.kategoriak = kats;
+      }
+      
     })
   }
   getKategoriabyId(id){

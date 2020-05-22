@@ -82,7 +82,11 @@ export class PostDetailPage implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');       	
     this.commentService.onGetComment(this.post.id).subscribe(comment => {
       console.log("COMMENTS",comment);
-        this.comments.push(comment[0]);
+        var coms = [];
+        for(var i=0; i<comment.length; i++){
+          coms.push(comment[i]);
+        }
+        this.comments = coms;
         console.log(this.comments);
 
       }, error => console.log("Error :: " + error));  	

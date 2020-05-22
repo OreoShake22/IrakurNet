@@ -1,3 +1,4 @@
+<ion-content padding>
 <div class="post contenido">
   <p class="lineaArriba">i/{{post.kategoria}} : e/{{post.name}} argitaratuta {{post.updated_at}}</p>
   <h3 class="title">{{post.title}}</h3>
@@ -12,7 +13,7 @@
     
   </div>
 </div>
-<ion-content padding>
+
 <form onsubmit="addComment()">
   <ion-label for="ltestua">Testua:</ion-label><br>
   <input type="text" [(ngModel)]="testua" id="ltestua" name="ltestua" placeholder="Testua">
@@ -20,8 +21,8 @@
 <ion-button type="button" class="btn btn-primary" myitem (click)='addComment()'>Iritzia gehitu</ion-button>
 <div *ngFor="let comment of comments" class="post contenido">
   <p class="lineaArriba">Argitaratuta {{comment.updated_at}}</p>
-  <h3 class="title">{{comments.idAutor}}</h3>
-  <p>{{comments.texto}}</p>
+  <h3 class="title">{{comment.idAutor}}</h3>
+  <p>{{comment.texto}}</p>
 </div>
 </ion-content>
 

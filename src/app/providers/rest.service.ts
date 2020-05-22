@@ -296,15 +296,15 @@ addComment(data:Comment) {
       }))
 }
 
-public getCommentById(commentId: number): Observable<Comment> {
+public getCommentById(commentId: number): Observable<Comment[]> {
 
   return this.httpClient
 
-    .get(this.baseUrl + '/comment/' + commentId)
+    .get<Comment[]>(this.baseUrl + '/comment/' + commentId)
 
     .map(response => {
 
-      return new Comment(response);
+      return response.map((response) => new Comment(response));
 
     })
 }
