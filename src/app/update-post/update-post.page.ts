@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-post',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-post.page.scss'],
 })
 export class UpdatePostPage implements OnInit {
-
-  constructor() { }
+  id 
+  idAutor=0
+  titulo:string="";skat:string="";testua:string="";media:string="";
+  constructor(private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.id= +this.route.snapshot.paramMap.get('id');  
   }
 
 }

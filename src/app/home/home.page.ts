@@ -113,8 +113,8 @@ export class HomePage {
       this.posts = res;
     })
   }
-  DeletePost(id:number){
-    this.postService.onRemovePost(id)
+  DeletePost(post:Post){
+    this.postService.onRemovePost(post)
   }
   updatePost(id:number){
     this.postService.onUpdatePost(id)

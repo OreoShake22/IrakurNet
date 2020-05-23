@@ -36,7 +36,7 @@ export class PostDetailPage implements OnInit {
     imgurl : ''
   };  
   getPost(): void {     
-    const id = +this.route.snapshot.paramMap.get('id');       	
+    const id = +this.route.snapshot.paramMap.get('id');
     this.postService.onGetPost(id).subscribe(post => {
       console.log(post);
         this.post = post[0];

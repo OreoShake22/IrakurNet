@@ -223,10 +223,10 @@ public updatePost(post: Post): Observable<Post> {
 }
 
 
-public deletePostById(PostId: number) {
+public deletePostById(post:Post) {
   return this.httpClient
 
-    .delete(this.baseUrl + '/post/' + PostId)
+    .delete(this.baseUrl + '/post/' + post)
 }  
 
 //#endregion
