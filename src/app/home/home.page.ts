@@ -23,7 +23,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  username;
   constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
     , public loadingController: LoadingController, public global: GlobalService, public storage: Storage, private userService:UsersService,) {
     console.log(platform.is('android'));
@@ -76,6 +76,7 @@ export class HomePage {
   }
 
   async ionViewWillEnter() {
+    this.username =  await this.storage.get("name");
     setTimeout(() => { this.getKategoriak();
       this.getPostak(); 
      }, 500);
