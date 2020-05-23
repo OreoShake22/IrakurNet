@@ -30,7 +30,7 @@
   </div>-->
   
   <div *ngFor="let post of posts | filtro:textoBuscar" class="post contenido">
-    <p class="lineaArriba"><a>i/{{post.kategoria}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
+    <p class="lineaArriba"><a href="/kategoriak/{{post.idKategoria}}">i/{{post.kategoria}}</a> : <a>e/{{post.name}}</a> argitaratuta {{post.updated_at}}</p>
     <h3 class="title"><a routerLink="/post/{{post.id}}">{{post.title}}</a></h3>
     <div class="imgVidLoQueSea">
       <div text-center *ngIf="platform.is('android'); else ordenagailua">
@@ -52,7 +52,7 @@
       <h4 id="pTop">Gaurko azpiIrakur komunitate onenak</h4>
     </div>
     <ol>
-      <li *ngFor= "let kategoria of kategoriak">{{kategoria.name}}</li>
+      <li *ngFor= "let kategoria of kategoriak"><a href="/kategoriak/{{kategoria.id}}">{{kategoria.name}}</a></li>
     </ol>
 
   </div>

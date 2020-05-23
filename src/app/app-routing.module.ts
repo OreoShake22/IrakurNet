@@ -20,6 +20,11 @@ const routes: Routes = [
     path: 'post/:id',
     loadChildren: () => import('./post-detail/post-detail.module').then( m => m.PostDetailPageModule)
   },
+  {
+    path: 'kategoriak/:id',
+    loadChildren: () => import('./kategoriak/kategoriak.module').then( m => m.KategoriakPageModule)
+  },
+
 
 
 ];
