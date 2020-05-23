@@ -197,15 +197,14 @@ public getPostById(postId: number): Observable<Post> {
 }
 
 
-public getPostByKategoria(kategoriaId: number): Observable<Post> {
+public getPostByKategoria(idKategoria): Observable<Post[]> {
 
   return this.httpClient
 
-    .get(this.baseUrl + '/post/' + kategoriaId+'/kategoria')
+    .get<Post[]>(this.baseUrl +idKategoria+ '/post')
 
-    .map(response => {
-
-      return new Post(response);
+    .map(post => {
+      return post.map((post) => new Post(post));
 
     })
 }
