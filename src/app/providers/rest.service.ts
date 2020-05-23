@@ -243,21 +243,24 @@ addUser(data:User) {
       }))
 }
 
-getUsuarioLogIn(data:User) {
-  console.log(data)
+getUsuarioLogIn(data:User): Observable<User> {
   let urlSearchParams  = {
     'name': data.name,
     'password': data.password
 };
   return this.httpClient
 
-    .get(this.baseUrl + '/user/' + {name:data.name,password:data.password})
+    .get<User>(this.baseUrl + '/user/login/' + data.name+'/'+data.password)
 
-    .map(response => {
+    .map(user => {
+      console.log(user[0])
+      console.log(user[0].id)
+      console.log(user[0].name)
+      this.storage.set('name', user[0].name);
+      this.storage.set('id', user[0].id);
       //this.global.globalId = data.id.toString();
       //this.global.globalUsername = data.name;
-
-      return new User(response);
+      return new User(user);
 
     })
 }
@@ -266,7 +269,7 @@ public getUserName(): Observable<User[]> {
 
   return this.httpClient
 
-    .get<Post[]>(this.baseUrl + '/user')
+    .get<Post[]>(this.baseUrl + '/user/names')
 
     .map(user => {
       return user.map((user) => new User(user));
@@ -274,23 +277,6 @@ public getUserName(): Observable<User[]> {
     })
 }
 
-public getUsers(data): Observable<User[]> {
-
-  return this.httpClient
-
-    .get<User[]>(this.baseUrl + '/user')
-
-    .map(user => {
-      user.forEach(u => {
-        if(u.name == data.name && u.password == data.password){
-          this.storage.set('name', u.name);
-          this.storage.set('id', u.id);
-        }
-      });
-      return user.map((user) => new User(user));
-
-    })
-}
 
 
 

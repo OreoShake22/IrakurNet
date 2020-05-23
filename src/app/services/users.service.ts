@@ -12,7 +12,7 @@ export class UsersService {
 
   onGetUsuario(data){
 
-    return this.restProvider.getUsers(data)
+    return this.restProvider.getUsuarioLogIn(data)
   }
 
   onComprobarUsuarios(){

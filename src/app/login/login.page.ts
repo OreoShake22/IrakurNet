@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
       name.value = "";
       var password = <HTMLInputElement>document.getElementById("password");
       password.value = "";
-      location.reload();
+      //location.reload();
     });
       
       //this.global.globalId = (res.id).toString();
