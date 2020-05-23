@@ -30,17 +30,17 @@ name:string="";email:string="";password:string="";
           if(user.name == name.name){
             open=false
             alert("Ese nombre de usuario ya esta en uso")
+          }else if(user.email == name.email){
+            open=false
+            alert("Ese Email ya esta en uso")
           }
         })
         if(open){
           this.usersService.onCreateUsuario(user).subscribe(result =>{
             this.usersService.onGetUsuario(user).subscribe(res =>{
-              var name = <HTMLInputElement>document.getElementById("name");
-          name.value = "";
-          var password = <HTMLInputElement>document.getElementById("password");
-          password.value = "";
-          var email = <HTMLInputElement>document.getElementById("email");
-          email.value = "";
+          this.name
+          this.password="";
+          this.email="";
     
           location.reload();
             })
