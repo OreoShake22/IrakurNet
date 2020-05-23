@@ -16,6 +16,8 @@ import { LoadingController } from '@ionic/angular';
 import { GlobalService } from "../global.service";
 import { Storage } from '@ionic/storage';
 
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -24,7 +26,7 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   constructor(public http: Http, public platform: Platform, private kategoriaservice:KategoriakService, private postService:PostService
-    , public loadingController: LoadingController, public global: GlobalService, public storage: Storage, private userService:UsersService) {
+    , public loadingController: LoadingController, public global: GlobalService, public storage: Storage, private userService:UsersService,) {
     console.log(platform.is('android'));
   }
 
@@ -128,6 +130,14 @@ export class HomePage {
   }
   getKategoriabyId(id){
     this.kategoriaservice.onGetKategoria(id).subscribe(res=>{console.log(res)})
+  }
+
+  share(id){
+    /*var link : any =  "http://localhost:8100/post/"+id
+    link.select();
+    link.setSelectionRange(0, 99999)
+    document.execCommand("copy");*/
+    alert("Link-a arbelera kopiatura");
   }
 
 }

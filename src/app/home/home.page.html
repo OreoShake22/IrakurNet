@@ -40,7 +40,7 @@
       <ng-template #ordenagailua>
         <img class="irudia" *ngIf="irudiaDa"  src="{{post.imageUrl}}" />
       </ng-template>
-      <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon><a routerLink="/post/{{post.id}}"> Zure iritzia eman</a><ion-icon name="share-social-outline"></ion-icon> Partekatu <ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
+      <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon><a routerLink="/post/{{post.id}}"> Zure iritzia eman</a><ion-icon name="share-social-outline"></ion-icon><label (click)="share(post.id)"> Partekatu </label><ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
       
       
     </div>

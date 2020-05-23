@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <div>
   <form onsubmit="addPost()">
     <label for="ftitulo">Titulua:</label><br>
     <input type="text" [(ngModel)]="titulo" id="ftitulo" name="ftitulo" placeholder="Tituloa"><br>
@@ -15,11 +16,16 @@
     <input type="text" [(ngModel)]="testua" id="ltestua" name="ltestua" placeholder="Testua"><br><br>
     <label for="fmedia">Media:</label><br>
     <input type="text" [(ngModel)]="media" id="fmedia" name="fmedia" placeholder="Media"><br>
+    <button type="button" class="btn yo btn-primary" myitem (click)='addPost()'>Posta gehitu</button>
   </form>
-  <button type="button" class="btn btn-primary" myitem (click)='addPost()'>Posta gehitu</button>
+  
+</div>
+<div>
   <form onsubmit="addKat()">
     <label for="fizena">Izena:</label><br>
     <input type="text" [(ngModel)]="myInput" id="fizena" name="fizena" placeholder="Kategoria izena"><br>
+    <button type="button" class="btn btn-primary" myitem (click)='addKat()'>Kategoria gehitu</button>
   </form>
-  <button type="button" class="btn btn-primary" myitem (click)='addKat()'>Kategoria gehitu</button>
+  
+</div>
 </ion-content>
