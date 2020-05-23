@@ -116,6 +116,9 @@ export class HomePage {
   DeletePost(id:number){
     this.postService.onRemovePost(id)
   }
+  updatePost(id:number){
+    this.postService.onUpdatePost(id)
+  }
   getKategoriak(){
     this.kategoriaservice.onGetKategoriak().subscribe(res=>{
       if(res.length<=10){
