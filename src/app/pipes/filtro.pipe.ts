@@ -13,7 +13,8 @@ export class FiltroPipe implements PipeTransform {
     texto = texto.toLocaleLowerCase();
 
     return posts.filter( post => {
-      return post.title.toLocaleLowerCase().includes(texto);
+      return post.title.toLocaleLowerCase().includes(texto)
+          || post.kategoria.toLocaleLowerCase().includes(texto);
     })
   }
 
