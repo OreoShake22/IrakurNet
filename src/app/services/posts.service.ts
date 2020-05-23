@@ -40,9 +40,9 @@ export class PostService {
     });
   }
 
-  onRemovePost(post) {
-    this.restProvider.deletePostById(post.id).subscribe(() => {
-      this.posts = this.posts.filter((e) =>  e.id !== post.id);
+  onRemovePost(id:number) {
+    this.restProvider.deletePostById(id).subscribe(() => {
+      this.posts = this.posts.filter((e) =>  e.id !== id);
     });
   }
 }

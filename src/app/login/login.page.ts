@@ -28,10 +28,8 @@ export class LoginPage implements OnInit {
     user.name=this.name;
     user.password=this.password;
     this.usersService.onGetUsuario(user).subscribe(response=>{
-      var name = <HTMLInputElement>document.getElementById("name");
-      name.value = "";
-      var password = <HTMLInputElement>document.getElementById("password");
-      password.value = "";
+      this.name="";
+      this.password="";
       location.reload();
     });
       

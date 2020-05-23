@@ -16,7 +16,6 @@ import { LoadingController } from '@ionic/angular';
 import { GlobalService } from "../global.service";
 import { Storage } from '@ionic/storage';
 
-import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 @Component({
   selector: 'app-home',
@@ -112,6 +111,9 @@ export class HomePage {
     this.postService.onGetPosts().subscribe(res=>{
       this.posts = res;
     })
+  }
+  DeletePost(id:number){
+    this.postService.onRemovePost(id)
   }
   getKategoriak(){
     this.kategoriaservice.onGetKategoriak().subscribe(res=>{
