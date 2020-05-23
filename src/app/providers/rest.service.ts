@@ -201,7 +201,7 @@ public getPostByKategoria(idKategoria): Observable<Post[]> {
 
   return this.httpClient
 
-    .get<Post[]>(this.baseUrl +idKategoria+ '/post')
+    .get<Post[]>(this.baseUrl + '/post/'+idKategoria+'/kategoria')
 
     .map(post => {
       return post.map((post) => new Post(post));
