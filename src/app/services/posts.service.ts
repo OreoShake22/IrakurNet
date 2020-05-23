@@ -24,6 +24,11 @@ export class PostService {
     return this.restProvider.getPostById(id)
   }
 
+  onGetPostbyKategoria(id){
+
+    return this.restProvider.getPostByKategoria(id)
+  }
+
   onCreatePost(data) {
 
     this.restProvider.addPost(data).subscribe();
