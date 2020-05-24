@@ -14,6 +14,7 @@ import { User } from '../Models/User'
 import { Comment } from '../Models/comment'
 
 import { GlobalService } from "../global.service";
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ import { GlobalService } from "../global.service";
 export class RestService {
   baseUrl: string = "http://localhost:81/api";
 
-  constructor(private httpClient: HttpClient, public global: GlobalService, private storage: Storage) { }
+  constructor(private httpClient: HttpClient, public global: GlobalService, private storage: Storage,
+    public toastController: ToastController) { }
 
   // Sending a GET request to /products
 
@@ -116,8 +118,12 @@ export class RestService {
   addKategoria(data) {
     return this.httpClient.post(this.baseUrl + '/kategoriak',
       { name: data }).pipe(
-        tap(res => {
+        tap(res => {try{
+          this.presentToast("Kategoria sortuta")
           return res;
+        }catch(error){
+          console.log("Error",error)
+        }
         }))
 }
 
@@ -178,8 +184,12 @@ public getPost(): Observable<Post[]> {
 addPost(data:Post) {
   return this.httpClient.post(this.baseUrl + '/post',
     { idKategoria:data.idKategoria,idAutor:data.idAutor,title:data.title,imageUrl:data.imgurl }).pipe(
-      tap(res => {
+      tap(res => {try{
+        this.presentToast("Posta sortuta")
         return res;
+      }catch(error){
+        console.log(error);
+      }
       }))
 }
 
@@ -234,12 +244,17 @@ public deletePostById(post:Post) {
 //#region User
 
 addUser(data:User) {
+  
   return this.httpClient.post(this.baseUrl + '/user',
     { name:data.name,email:data.email,password:data.password }).pipe(
-      tap(res => {
+      tap(res => {try{
         //this.global.globalId = data.id.toString();
         //this.global.globalUsername = data.name;
         return res;
+      } catch (error) {
+        this.presentToast("Sartutako datuak gaizki daude");
+        return error;
+      }
       }))
 }
 
@@ -252,7 +267,7 @@ getUsuarioLogIn(data:User): Observable<User> {
 
     .get<User>(this.baseUrl + '/user/login/' + data.name+'/'+data.password)
 
-    .map(user => {
+    .map(user => {try{
       console.log(user[0])
       console.log(user[0].id)
       console.log(user[0].name)
@@ -261,8 +276,12 @@ getUsuarioLogIn(data:User): Observable<User> {
       //this.global.globalId = data.id.toString();
       //this.global.globalUsername = data.name;
       return new User(user);
-
+} catch (error) {
+    this.presentToast("Sartutako datuak gaizki daude");
+    return error;
+  }
     })
+  
 }
 
 public getUserName(): Observable<User[]> {
@@ -342,4 +361,13 @@ public deleteCommentById(commentId: number) {
 }  
 
 //#endregion
+
+async presentToast(text) {
+  const toast = await this.toastController.create({
+    message: text,
+    duration: 2000,
+    position: 'middle'
+  });
+  toast.present();
+}
 }

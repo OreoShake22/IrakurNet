@@ -42,10 +42,10 @@
       </ng-template>
       <p class="footer"><ion-icon name="chatbubbles-outline"></ion-icon><a routerLink="/post/{{post.id}}"> Zure iritzia eman</a><ion-icon name="share-social-outline"></ion-icon><label (click)="share(post.id)"> Partekatu </label><ion-icon name="flag"></ion-icon> <label (click)="report()"> Reportatu</label></p>
       <ion-button (click)="DeletePost(post.id)" *ngIf="post.name == username">
-        Sure posta ezabatu
+        Zure posta ezabatu
       </ion-button>
       <ion-button href="/update-post/{{post.id}}" *ngIf="post.name == username">
-        Sure posta eguneratu
+        Zure posta eguneratu
       </ion-button>
       
       

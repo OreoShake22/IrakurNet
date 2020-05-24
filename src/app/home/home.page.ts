@@ -115,6 +115,9 @@ export class HomePage {
   }
   DeletePost(post:Post){
     this.postService.onRemovePost(post)
+    setTimeout(function(){
+      location.reload();
+  }, 1000);
   }
   updatePost(id:number){
     this.postService.onUpdatePost(id)

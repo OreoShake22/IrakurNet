@@ -11,19 +11,31 @@ import { Post } from '../Models/Post';
 export class UpdatePostPage implements OnInit {
   id 
   idAutor=0
+  post: Post ={
+    id : 0,
+    idAutor: 0,
+    idKategoria : 0,
+    kategoria : '',
+    name : '',
+    createdData : '',
+    title : '',
+    imgurl : ''
+  }; 
   titulo:string="";skat:string="";media:string="";
   constructor(private route: ActivatedRoute,private postService: PostService) { }
 
   ngOnInit() {
     this.id= +this.route.snapshot.paramMap.get('id');
     this.postService.onGetPost(this.id).subscribe(result=>{
-        var post:Post = result[0]
-        console.log(post)
-        this.idAutor=post.idAutor;
-        this.titulo=post.title;
-        this.media=post.imgurl;
-        console.log(post.imgurl)
+        this.post = result[0];
+        console.log(result[0])
+        this.idAutor=this.post.idAutor;
+        this.titulo=this.post.title;
+        this.media=this.post.imgurl;
+        console.log(this.post.imgurl)
         console.log(this.media)
+        var img = <HTMLInputElement>document.getElementById("fmedia");
+        img.value = "";
     })
 
   }
