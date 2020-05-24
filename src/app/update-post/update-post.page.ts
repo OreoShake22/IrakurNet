@@ -27,15 +27,11 @@ export class UpdatePostPage implements OnInit {
   ngOnInit() {
     this.id= +this.route.snapshot.paramMap.get('id');
     this.postService.onGetPost(this.id).subscribe(result=>{
-        this.post = result[0];
-        console.log(result[0])
-        this.idAutor=this.post.idAutor;
-        this.titulo=this.post.title;
-        this.media=this.post.imgurl;
-        console.log(this.post.imgurl)
-        console.log(this.media)
-        var img = <HTMLInputElement>document.getElementById("fmedia");
-        img.value = "";
+        var post:Post = result[0]
+        console.log(post)
+        this.idAutor=post.idAutor;
+        this.titulo=post.title;
+        this.media=result[0].imageUrl;
     })
 
   }
