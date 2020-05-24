@@ -29,10 +29,10 @@ name:string="";email:string="";password:string="";
         names.forEach(name=>{
           if(user.name == name.name){
             open=false
-            alert("Ese nombre de usuario ya esta en uso")
+            alert("Erabiltzaile hau jadanik existitzen da")
           }else if(user.email == name.email){
             open=false
-            alert("Ese Email ya esta en uso")
+            alert("Email hau jadanik erabiltzen da")
           }
         })
         if(open){
@@ -42,7 +42,9 @@ name:string="";email:string="";password:string="";
           this.password="";
           this.email="";
     
-          location.reload();
+          setTimeout(function(){
+            location.reload();
+        }, 500);
             })
             
           })

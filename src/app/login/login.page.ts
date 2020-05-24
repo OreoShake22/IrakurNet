@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { GlobalService } from "../global.service";
 import { Storage } from '@ionic/storage';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -31,7 +33,7 @@ export class LoginPage implements OnInit {
       user.name = this.name;
       user.password = this.password;
       this.usersService.onGetUsuario(user).subscribe(response => {
-        if (response.id != null) {
+        if (response[0].id != null) {
           this.name = "";
           this.password = "";
           location.reload();
@@ -57,4 +59,6 @@ export class LoginPage implements OnInit {
 
 
   }
+
+  
 }
