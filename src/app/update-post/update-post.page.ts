@@ -21,9 +21,7 @@ export class UpdatePostPage implements OnInit {
         console.log(post)
         this.idAutor=post.idAutor;
         this.titulo=post.title;
-        this.media=post.imgurl;
-        console.log(post.imgurl)
-        console.log(this.media)
+        this.media=result[0].imageUrl;
     })
 
   }
