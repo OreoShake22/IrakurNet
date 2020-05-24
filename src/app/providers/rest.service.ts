@@ -183,7 +183,7 @@ public getPost(): Observable<Post[]> {
 
 addPost(data:Post) {
   return this.httpClient.post(this.baseUrl + '/post',
-    { idKategoria:data.idKategoria,idAutor:data.idAutor,title:data.title,imageUrl:data.imgurl }).pipe(
+    { idKategoria:data.idKategoria,idAutor:data.idAutor,title:data.title,imageUrl:data.imageUrl }).pipe(
       tap(res => {try{
         this.presentToast("Posta sortuta")
         return res;

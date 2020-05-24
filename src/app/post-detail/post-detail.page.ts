@@ -33,14 +33,14 @@ export class PostDetailPage implements OnInit {
     name: '',
     createdData: '',
     title: '',
-    imgurl: ''
+    imageUrl: ''
   };
   getPost(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.postService.onGetPost(id).subscribe(post => {
       console.log(post);
       this.post = post[0];
-      document.getElementsByClassName("irudia")[0].setAttribute("src", post.imgurl);
+      document.getElementsByClassName("irudia")[0].setAttribute("src", post.imageUrl);
 
       this.getComment();
 

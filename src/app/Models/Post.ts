@@ -8,7 +8,7 @@ export  class  Post {
     
     title: string;
 
-    imgurl: string;
+    imageUrl: string;
 
     createdData: string;
 

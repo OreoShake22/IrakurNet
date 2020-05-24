@@ -87,7 +87,7 @@ export class AddPostPagePage implements OnInit {
 
     post.title = this.titulo;
 
-    post.imgurl = this.media;
+    post.imageUrl = this.media;
     post.idAutor = this.idAutor
     try{
     this.postService.onCreatePost(post)

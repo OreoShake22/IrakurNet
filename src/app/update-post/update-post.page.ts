@@ -5,7 +5,7 @@ import { Post } from '../Models/Post';
 import { KategoriakService } from '../services/kategoriak.service';
 import { GlobalService } from '../global.service';
 import { Kategoria } from '../Models/kategoria';
-import { element } from 'protractor';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-update-post',

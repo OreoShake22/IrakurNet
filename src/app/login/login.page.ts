@@ -41,23 +41,6 @@ export class LoginPage implements OnInit {
 
       });
     }
-
-
-    //this.global.globalId = (res.id).toString();
-
-    //this.global.globalUsername = res.name;
-    //this.storage.set('name', this.name);
-
-
-
-
-
-
-
-
-
-
-
   }
 
   
