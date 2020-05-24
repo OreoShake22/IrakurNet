@@ -16,6 +16,16 @@ export class UpdatePostPage implements OnInit {
   id
   userId;
   idAutor = 0
+  post: Post = {
+    id: 0,
+    idAutor: 0,
+    idKategoria: 0,
+    kategoria: '',
+    name: '',
+    createdData: '',
+    title: '',
+    imageUrl: ''
+  };
   
   titulo: string = "";idKategoria=0; media: string = "";
   constructor(private route: ActivatedRoute,private kategoriaservice: KategoriakService, private postService: PostService, private router: Router, public global: GlobalService, private storage: Storage) { }
