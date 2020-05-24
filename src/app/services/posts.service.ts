@@ -39,9 +39,7 @@ export class PostService {
   }
 
   onUpdatePost(post) {
-    this.restProvider.updatePost(post).subscribe((updatedPost) => {
-
-    });
+    return this.restProvider.updatePost(post)
   }
 
   onRemovePost(post: Post) {

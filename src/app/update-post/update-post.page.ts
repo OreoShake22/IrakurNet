@@ -15,17 +15,8 @@ import { Storage } from '@ionic/storage';
 export class UpdatePostPage implements OnInit {
   id
   userId;
-  idAutor = 0
-  post: Post = {
-    id: 0,
-    idAutor: 0,
-    idKategoria: 0,
-    kategoria: '',
-    name: '',
-    createdData: '',
-    title: '',
-    imageUrl: ''
-  };
+  idAutor = 0;
+  post:Post;
   
   titulo: string = "";idKategoria=0; media: string = "";
   constructor(private route: ActivatedRoute,private kategoriaservice: KategoriakService, private postService: PostService, private router: Router, public global: GlobalService, private storage: Storage) { }
@@ -37,12 +28,12 @@ export class UpdatePostPage implements OnInit {
       this.router.navigateByUrl('/home');
     }
     this.postService.onGetPost(this.id).subscribe(result => {
-      var post: Post = result[0]
-      console.log(post)
-      this.idAutor = post.idAutor;
-      this.titulo = post.title;
+      this.post = result[0]
+      console.log(this.post)
+      this.idAutor = this.post.idAutor;
+      this.titulo = this.post.title;
       this.media = result[0].imageUrl;
-      this.idKategoria=post.idKategoria
+      this.idKategoria=this.post.idKategoria
       this.loadKategoriak()
     
     
@@ -66,6 +57,16 @@ export class UpdatePostPage implements OnInit {
         }
         selector.selectedIndex = index;
       })
+  }
+
+  PostUpdate(){
+    var selector = <HTMLFormElement>document.getElementById("fkat");
+    this.post.idKategoria=this.kategoriak[selector.selectedIndex].id
+    this.post.imageUrl=this.media;
+    this.post.title=this.titulo;
+    this.postService.onUpdatePost(this.post).subscribe(result=>{
+      location.reload();
+    })
   }
 
 }
