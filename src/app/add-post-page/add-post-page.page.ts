@@ -21,7 +21,7 @@ posts:Post[];
 
   myInput:string="";
   idAutor=0
-  titulo:string="";skat:string="";testua:string="";media:string="";
+  titulo:string="";skat:string="";media:string="";
   async ngOnInit() {
       var username = await this.storage.get('name');
       this.idAutor=await this.storage.get('id')
@@ -89,8 +89,6 @@ posts:Post[];
 
       var titulo = <HTMLInputElement>document.getElementById("ftitulo");
       titulo.value = "";
-      var testua = <HTMLInputElement>document.getElementById("ltestua");
-      testua.value = "";
       var media = <HTMLInputElement>document.getElementById("fmedia");
       media.value = "";
     }

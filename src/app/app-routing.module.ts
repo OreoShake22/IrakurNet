@@ -23,8 +23,9 @@ const routes: Routes = [
   {
     path: 'kategoriak/:id',
     loadChildren: () => import('./kategoriak/kategoriak.module').then( m => m.KategoriakPageModule)
-  },  {
-    path: 'update-post',
+  },
+  {
+    path: 'update-post/:id',
     loadChildren: () => import('./update-post/update-post.module').then( m => m.UpdatePostPageModule)
   },
 

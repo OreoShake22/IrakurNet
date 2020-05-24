@@ -14,6 +14,10 @@ export class PostService {
       
       });
   }
+
+  LePosts():Post[]{
+    return this.posts
+  }
   onGetPosts(){
 
     return this.restProvider.getPost()

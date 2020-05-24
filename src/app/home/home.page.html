@@ -44,7 +44,7 @@
       <ion-button (click)="DeletePost(post.id)" *ngIf="post.name == username">
         Sure posta ezabatu
       </ion-button>
-      <ion-button (click)="updatePost(post.id)" *ngIf="post.name == username">
+      <ion-button href="/update-post/{{post.id}}" *ngIf="post.name == username">
         Sure posta eguneratu
       </ion-button>
       
