@@ -65,7 +65,7 @@ export class UpdatePostPage implements OnInit {
     this.post.imageUrl=this.media;
     this.post.title=this.titulo;
     this.postService.onUpdatePost(this.post).subscribe(result=>{
-      location.reload();
+      //location.reload();
     })
   }
 

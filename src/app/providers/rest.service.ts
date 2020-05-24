@@ -221,7 +221,7 @@ public getPostByKategoria(idKategoria): Observable<Post[]> {
 
 
 public updatePost(post: Post): Observable<Post> {
-
+console.log(post)
   return this.httpClient
 
     .put(this.baseUrl + '/post/' + post.id, post)
