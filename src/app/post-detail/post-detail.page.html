@@ -14,11 +14,11 @@
   </div>
 </div>
 
-<form onsubmit="addComment()">
+<form *ngIf="username != null || username != undefined" onsubmit="addComment()">
   <ion-label for="ltestua">Testua:</ion-label><br>
   <input type="text" [(ngModel)]="testua" id="ltestua" name="ltestua" placeholder="Testua">
 </form>
-<ion-button type="button" class="btn btn-primary" myitem (click)='addComment()'>Iritzia gehitu</ion-button>
+<ion-button type="button" *ngIf="username != null || username != undefined" class="btn btn-primary" myitem (click)='addComment()'>Iritzia gehitu</ion-button>
 <div *ngFor="let comment of comments" class="comment contenido">
   <p class="lineaArriba">Argitaratuta {{comment.updated_at}}</p>
   <h3 class="title">{{comment.name}}-ren iritzia</h3>

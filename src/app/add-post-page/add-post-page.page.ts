@@ -94,7 +94,7 @@ export class AddPostPagePage implements OnInit {
     console.log(post);
     this.presentToast("Posta sortuta");
     setTimeout(function(){
-      location.reload();
+      this.router.navigateByUrl('/home');
   }, 1000);
 }catch(error){
   console.log(error)

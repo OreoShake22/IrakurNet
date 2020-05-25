@@ -7,6 +7,7 @@ import { Comment } from './../Models/comment';
 import { Location } from '@angular/common';
 
 import { Platform } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-post-detail',
@@ -19,11 +20,13 @@ export class PostDetailPage implements OnInit {
     private postService: PostService,
     private location: Location,
     public platform: Platform,
-    private commentService: CommentService) { }
+    private commentService: CommentService,
+    private storage: Storage) { }
 
   testua: string = "";
   irudiaDa = true;
   bideoaDa = false;
+  username = null;
   comments: Comment[] = [{ id: 0, idAutor: 0, idPost: 0, texto: '', createdData: '' }];
   post: Post = {
     id: 0,
@@ -51,7 +54,8 @@ export class PostDetailPage implements OnInit {
     this.location.back();
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.username = await this.storage.get("name");
 
   }
   ionViewWillEnter() {

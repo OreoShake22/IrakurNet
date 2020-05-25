@@ -66,6 +66,7 @@ export class UpdatePostPage implements OnInit {
     this.post.title=this.titulo;
     this.postService.onUpdatePost(this.post).subscribe(result=>{
       //location.reload();
+      this.router.navigateByUrl('/home');
     })
   }
 
